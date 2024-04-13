@@ -19,6 +19,11 @@ public class MainMenu : MonoBehaviour
 
     public void GoToPlayground()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(1);
+    }
+
+    public void GoToPerformance()
+    {
+        SceneManager.LoadScene(2);
     }
 }

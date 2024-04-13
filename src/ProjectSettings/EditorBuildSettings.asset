@@ -10,13 +10,10 @@ EditorBuildSettings:
     guid: fc2df0351a635449fbd2733455033f0a
   - enabled: 1
     path: Assets/Scenes/PlaygroundScene.unity
-    guid: 8aa1cf9c8616e4c1688d6784e4891700
+    guid: 42fa4072cf98a9b4aaa9b41fad4307c1
   - enabled: 1
     path: Assets/Scenes/PerformanceScene.unity
     guid: d0bbd0a22693141908637b94cfd3bdae
-  - enabled: 1
-    path: Assets/Scenes/TheMinmalist_Mian.unity
-    guid: 42fa4072cf98a9b4aaa9b41fad4307c1
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}
