@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 // combo?
 // adding indicators (bad, good, perfect) to the drum
@@ -15,7 +16,7 @@ public class closingCircle : MonoBehaviour
     private GameObject changedTorus;
     private Queue<GameObject> queue = new Queue<GameObject>();
     private float diameterDrum;
-    private Text pointsText;
+    private TextMeshProUGUI pointsText;
 
     private IEnumerator ShrinkTorus(GameObject torus)
     {
@@ -48,9 +49,9 @@ public class closingCircle : MonoBehaviour
         // the queue is only used here
         if (queue.Count > 0)
         {
-            GameObject smallTorus = queue.Dequeue();
-            newPoints = (int)(diameterDrum / smallTorus.transform.localScale.x); // * multiplier
-            Destroy(smallTorus);
+            GameObject smallTorus = queue.Peek();
+            newPoints = (int)(diameterDrum * 3 / smallTorus.transform.localScale.x); // * multiplier
+            smallTorus.transform.localScale = new Vector3(0, 0, 0);
         }
         else
         {
@@ -62,7 +63,7 @@ public class closingCircle : MonoBehaviour
     void Start()
     {
         // points text
-        pointsText = GameObject.Find("PointsText").GetComponent<Text>();
+        pointsText = GameObject.Find("PointsText").GetComponent<TextMeshProUGUI>();
 
         //diameter of the drums and position
         diameterDrum = transform.localScale.x;
