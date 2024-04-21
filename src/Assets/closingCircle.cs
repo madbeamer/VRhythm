@@ -10,12 +10,12 @@ using TMPro;
 public class closingCircle : MonoBehaviour
 {
     public GameObject torusPrefab;
-    public float shrinkingtime;
+    public GameObject particlesPrefab;
     public float[] rythm;
 
     private GameObject changedTorus;
     private Queue<GameObject> queue = new Queue<GameObject>();
-    private float diameterDrum;
+    private float radiusDrum;
     private TextMeshProUGUI pointsText;
 
     private IEnumerator ShrinkTorus(GameObject torus)
@@ -23,8 +23,8 @@ public class closingCircle : MonoBehaviour
         float startScale = torus.transform.localScale.x;
         while (torus.transform.localScale.x > 0)
         {
-            float scaleChange = startScale / shrinkingtime * Time.deltaTime;
-            torus.transform.localScale -= new Vector3(scaleChange, scaleChange, 0);
+            float scaleChange = startScale / 1 * Time.deltaTime; // 1 is the shrinking time
+            torus.transform.localScale -= new Vector3(scaleChange, 0, scaleChange);
             yield return null;
         }
         Destroy(queue.Dequeue());
@@ -50,7 +50,16 @@ public class closingCircle : MonoBehaviour
         if (queue.Count > 0)
         {
             GameObject smallTorus = queue.Peek();
-            newPoints = (int)(diameterDrum * 3 / smallTorus.transform.localScale.x); // * multiplier
+            float radiusTorus = smallTorus.transform.localScale.x / 2;
+
+            //particle system, change color depending on the radius
+            GameObject particles = Instantiate(particlesPrefab, transform.position, Quaternion.Euler(-90f, 0f, 0f));
+            particles.transform.localScale = new Vector3(radiusTorus, radiusTorus, 1);
+
+            //add points
+            newPoints = (int)(radiusDrum/radiusTorus); // * multiplier
+
+            //destroy the torus
             smallTorus.transform.localScale = new Vector3(0, 0, 0);
         }
         else
@@ -66,12 +75,11 @@ public class closingCircle : MonoBehaviour
         pointsText = GameObject.Find("PointsText").GetComponent<TextMeshProUGUI>();
 
         //diameter of the drums and position
-        diameterDrum = transform.localScale.x;
+        radiusDrum = transform.localScale.x / 2;
 
         //create modified clone of torus
-        changedTorus = Instantiate(torusPrefab);
-        changedTorus.transform.localScale = new Vector3(diameterDrum, diameterDrum, torusPrefab.transform.localScale.z);
-        changedTorus.transform.position = transform.position;
+        changedTorus = Instantiate(torusPrefab, transform.position + new Vector3(0, transform.localScale.y / 2, 0), transform.rotation);
+        changedTorus.transform.localScale = new Vector3(radiusDrum, torusPrefab.transform.localScale.y, radiusDrum);
 
         StartCoroutine(SpawnTorus());
     }
