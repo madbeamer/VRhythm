@@ -27,6 +27,7 @@ public class closingCircle : MonoBehaviour
             torus.transform.localScale -= new Vector3(scaleChange, 0, scaleChange);
             yield return null;
         }
+        //destroy the torus
         Destroy(queue.Dequeue());
     }
 
@@ -52,7 +53,7 @@ public class closingCircle : MonoBehaviour
             GameObject smallTorus = queue.Peek();
             float radiusTorus = smallTorus.transform.localScale.x / 2;
 
-            //particle system, change color depending on the radius
+            //particle system, change color and multiplier depending on the radius
             GameObject particles = Instantiate(particlesPrefab, transform.position, Quaternion.Euler(-90f, 0f, 0f));
             particles.transform.localScale = new Vector3(radiusTorus, radiusTorus, 1);
 
@@ -64,7 +65,8 @@ public class closingCircle : MonoBehaviour
         }
         else
         {
-            newPoints = -1; // cheange the amount of points lost
+            //points lost if struck without a torus
+            newPoints = -1;
         }
         pointsText.text = (int.Parse(pointsText.text) + newPoints).ToString();
     }
