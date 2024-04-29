@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &472009336
+--- !u!1001 &258875296
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -131,136 +131,60 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7138148044016009547, guid: 631ae3fc62a434b90b346b7a843bf3fa, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.26
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138148044016009547, guid: 631ae3fc62a434b90b346b7a843bf3fa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.99
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138148044016009547, guid: 631ae3fc62a434b90b346b7a843bf3fa, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.7730236
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138148044016009547, guid: 631ae3fc62a434b90b346b7a843bf3fa, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138148044016009547, guid: 631ae3fc62a434b90b346b7a843bf3fa, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138148044016009547, guid: 631ae3fc62a434b90b346b7a843bf3fa, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138148044016009547, guid: 631ae3fc62a434b90b346b7a843bf3fa, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138148044016009547, guid: 631ae3fc62a434b90b346b7a843bf3fa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138148044016009547, guid: 631ae3fc62a434b90b346b7a843bf3fa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7138148044016009547, guid: 631ae3fc62a434b90b346b7a843bf3fa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9032613112034286111, guid: 631ae3fc62a434b90b346b7a843bf3fa, type: 3}
+    - target: {fileID: 1544430880370742005, guid: d6e7425c66945414b86e637dea8ad3e2, type: 3}
       propertyPath: m_Name
       value: FullDrumset
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 631ae3fc62a434b90b346b7a843bf3fa, type: 3}
---- !u!1001 &596984421
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
+    - target: {fileID: 5332353444723749955, guid: d6e7425c66945414b86e637dea8ad3e2, type: 3}
+      propertyPath: m_Name
+      value: DrumMedium
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126799304113916345, guid: d6e7425c66945414b86e637dea8ad3e2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.99
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
+    - target: {fileID: 9126799304113916345, guid: d6e7425c66945414b86e637dea8ad3e2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.15
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
+    - target: {fileID: 9126799304113916345, guid: d6e7425c66945414b86e637dea8ad3e2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 3.5971289
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
+    - target: {fileID: 9126799304113916345, guid: d6e7425c66945414b86e637dea8ad3e2, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
+    - target: {fileID: 9126799304113916345, guid: d6e7425c66945414b86e637dea8ad3e2, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
+    - target: {fileID: 9126799304113916345, guid: d6e7425c66945414b86e637dea8ad3e2, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
+    - target: {fileID: 9126799304113916345, guid: d6e7425c66945414b86e637dea8ad3e2, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
+    - target: {fileID: 9126799304113916345, guid: d6e7425c66945414b86e637dea8ad3e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
+    - target: {fileID: 9126799304113916345, guid: d6e7425c66945414b86e637dea8ad3e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
+    - target: {fileID: 9126799304113916345, guid: d6e7425c66945414b86e637dea8ad3e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
-      propertyPath: m_Name
-      value: Stage
-      objectReference: {fileID: 0}
-    - target: {fileID: -5477749408508380018, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -11721089595726273, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 18.95
-      objectReference: {fileID: 0}
-    - target: {fileID: -11721089595726273, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -27.91
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
-      propertyPath: m_Name
-      value: concert-stage-includes-animated-lighting-in-cyclic-mods
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
-    - {fileID: 65702495048144492, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
-    - {fileID: 6354294067774849567, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
-    - {fileID: -6964311229977154457, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
-    - {fileID: -1237228143909964809, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
-    - {fileID: -2263265187172539735, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
-    - {fileID: 7861854473326295642, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
-    - {fileID: 38724342280597675, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
-    - {fileID: 2490154312747001383, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
+    - {fileID: 8943219560742390177, guid: d6e7425c66945414b86e637dea8ad3e2, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 662ca5e31402b45c881ecb50f0725989, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: d6e7425c66945414b86e637dea8ad3e2, type: 3}
 --- !u!1 &846493664
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,11 +440,68 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1001 &6872951720743264944
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1928529061835385675, guid: 735efd085f09a47d5856ac149789a438, type: 3}
+      propertyPath: m_Name
+      value: concert-stage-includes-animated-lighting-in-cyclic-mods
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 735efd085f09a47d5856ac149789a438, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 846493667}
   - {fileID: 1186774131}
-  - {fileID: 596984421}
-  - {fileID: 472009336}
+  - {fileID: 6872951720743264944}
+  - {fileID: 258875296}
