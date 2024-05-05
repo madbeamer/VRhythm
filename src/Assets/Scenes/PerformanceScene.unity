@@ -1019,6 +1019,7 @@ GameObject:
   - component: {fileID: 1254103493}
   - component: {fileID: 1254103495}
   - component: {fileID: 1254103494}
+  - component: {fileID: 1254103496}
   m_Layer: 0
   m_Name: Drums
   m_TagString: Untagged
@@ -1153,6 +1154,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficultyIndex: 3
   songIndex: 0
+--- !u!114 &1254103496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254103492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6204739c2aa7de46bc6cb6cb8efe9c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1513318723
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,8 +13,32 @@ public class Songs : MonoBehaviour
     //for songs that have multiple difficulties i duplicate them for each difficulty
     private List<float> timeTable = new List<float>();
     private List<int> drumLines = new List<int>();
-
-    public enum DifficultyIndex
+    private HashSet<int> DrumsNeeded;
+    //for more info: https://github.com/TheNathannator/GuitarGame_ChartFormats/blob/main/doc/FileFormats/.chart/Drums.md
+    private Dictionary<int, string> difficultyDescriptions = new Dictionary<int, string>
+    {
+        {0, 'Kick'}
+        {1, 'Red'}
+        {2, 'Yellow'}
+        {3, 'Blue'}
+        {4, '5-lane Orange, 4-lane Green'}
+        {5, '5-lane Green'}
+        {32, 'Expert + kick / 2x kick'}
+        {34, 'Red accent modifier'}
+        {35, 'Yellow accent modifier'}
+        {36, 'Blue accent modifier'}
+        {37, '5-lane Orange, 4-lane Green accent modifier'}
+        {38, '5-lane Green accent modifier'}
+        {40, 'Red ghost modifier'}
+        {41, 'Yellow ghost modifier'}
+        {42, 'Blue ghost modifier'}
+        {43, '5-lane Orange, 4-lane Green ghost modifier'}
+        {44, '5-lane Green ghost modifier'}
+        {66, 'Yellow cymbal modifier'}
+        {67, 'Blue cymbal modifier'}
+        {68, 'Green cymbal modifier'}
+    }
+public static enum DifficultyIndex
     {
         Easy,
         Medium,
@@ -31,10 +55,10 @@ public class Songs : MonoBehaviour
         // Get the AudioSource component attached to this GameObject
         audioSource = GetComponent<AudioSource>();
         //returning the .chart and the .wav paths
-        var (audioClipPath, notesPath) = OpenNthFolder();
+        var (audioClipPath, CsvPath) = OpenNthFolder();
 
         StartCoroutine(LoadClip(audioSource, audioClipPath));
-        ReadChartFile(notesPath);
+        ReadCsv(CsvPath);
     }
 
     // Call this method to open the n-th folder in the base directory
@@ -44,7 +68,7 @@ public class Songs : MonoBehaviour
         //get the folder of the song
         string folder_song = Directory.GetDirectories(difficulty_folder)[songIndex];
         // Open the folder
-        return (Path.Combine(folder_song, "song.wav"), Path.Combine(folder_song, "notes.chart"));
+        return (Path.Combine(folder_song, "song.wav"), Path.Combine(folder_song, "time_notes.txt"));
     }
 
     private IEnumerator LoadClip(AudioSource audioSource, string audioClipPath)
@@ -62,97 +86,33 @@ public class Songs : MonoBehaviour
             }
         }
     }
-    private void ReadChartFile(string filePath)
+    private void ReadCsv(string filePath)
     {
-        string diffDrum = $"[{difficultyIndex}Drums]";
-        string line;
-        string[] parts;
-        float noBPM;
-        List<(int, int)> syncLines = new List<(int, int)>();
-        List<int> drumTime = new List<int>();
-        //in song.ini there is the preview start time, i don't know what it does
-
         using (StreamReader sr = new StreamReader(filePath))
         {
-            //find the resolution
-            while ((line = sr.ReadLine()) != null && !line.StartsWith("  Resolution")) { }
-            // i divide by 60 (seconds/minute) and by 1000 (because the bpm is *1000)
-            noBPM = 60000f / float.Parse(line.Split(' ')[4]);
-
-            //find the sync track
-            while (sr.ReadLine() != "[SyncTrack]") { }
-            //skip '{'
-            sr.ReadLine();
-            //read until the end of the sync track
-            while ((line = sr.ReadLine()) != "}")
+            string line;
+            //read csv to get the time table and the drum lines
+            while ((line = sr.ReadLine()) != null)
             {
-                parts = line.Split(' ');
-                //parts[4] = letter, parts[2] = tick, parts[5] = bpm
-                //there is also 'TS' but i don't know what it does
-                if (parts[4] == "B")
-                {
-                    //different bpm at different ticks
-                    syncLines.Add((int.Parse(parts[2]), int.Parse(parts[5])));
-                }
+                string[] parts = line.Split('/');
+                timeTable.Add(float.Parse(parts[0]));
+                drumLines.Add(int.Parse(parts[1]));
             }
-            //find the drum track
-            while (sr.ReadLine() != diffDrum) { }
-            //skip '{'
-            sr.ReadLine();
-            //read until the end of the drum track
-            while ((line = sr.ReadLine()) != "}")
-            {
-                parts = line.Split(' ');
-                //parts[2] = tick, parts[4] = letter, parts[5] = int, parts[6] = int
-                //there is also 'S' but i don't know what it does
-                //there is also part[6] but i don't know what it does and it is always 0
-                if (parts[4] == "N")
-                {
-                    drumTime.Add(int.Parse(parts[2]));
-                    //type of drum
-                    drumLines.Add(int.Parse(parts[5]));
-                }
-            }
+            DrumsNeeded = new HashSet<int>(drumLines);
+            Debug.Log("Drums needed: " + string.Join(", ", DrumsNeeded));
         }
-
-        //not to efficent but i don't think it will be a problem
-        createTimeTable(drumTime, syncLines, noBPM);
     }
     //create the time teable that will be used to wait the time between the notes
-    private void createTimeTable(List<int> drumTime, List<(int, int)> syncLines, float noBPM)
-    {
-        //in all songs there is a time delay when the songs start but i dont know how to get it
-        //timeTable.Add(syncLines[0].Item1 * (noBPM / syncLines[0].Item2));
-        int len1 = drumTime.Count - 2;
-        int len2 = syncLines.Count;
-
-        for (int i = 0; i < len1; i++)
-        {
-            // difference between the time of the notes
-            int diff = drumTime[i + 1] - drumTime[i];
-            for (int x = 0; x < len2; x++)
-            {
-                if (syncLines[x].Item1 <= drumTime[i] && (x == len2 - 1 || syncLines[x + 1].Item1 > drumTime[i + 1]))
-                {
-                    //current Ticks/Seconds multiplied by the difference between the notes
-                    timeTable.Add(diff * (noBPM / syncLines[x].Item2));
-                    break;
-                }
-            }
-        }
-    }
 
     private IEnumerator GetRhythm()
     {
-        //i can check wich time point is nearest and wait for it by doing nothing
-        //the note come before the song starts?????
         int len = timeTable.Count;
         for (int i = 0; i < len; i++)
         {
             yield return new WaitForSeconds(timeTable[i]);
             int a = drumLines[i];
-            //what drum to play
             Debug.Log(a);
+            //what drum to play
         }
     }
 
