@@ -3,6 +3,9 @@ src/Library/
 !*.a
 !*.dll
 
+src/UserSettings/Layouts/default-2022.dwlt
+src/Assets/XR/Settings/Open\ XR\ Package\ Settings.asset
+
 # Created by https://www.toptal.com/developers/gitignore/api/unity,git,csharp
 # Edit at https://www.toptal.com/developers/gitignore?templates=unity,git,csharp
 
