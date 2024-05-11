@@ -17,28 +17,28 @@ public class Songs : MonoBehaviour
     //for more info: https://github.com/TheNathannator/GuitarGame_ChartFormats/blob/main/doc/FileFormats/.chart/Drums.md
     private Dictionary<int, string> difficultyDescriptions = new Dictionary<int, string>
     {
-        {0, 'Kick'}
-        {1, 'Red'}
-        {2, 'Yellow'}
-        {3, 'Blue'}
-        {4, '5-lane Orange, 4-lane Green'}
-        {5, '5-lane Green'}
-        {32, 'Expert + kick / 2x kick'}
-        {34, 'Red accent modifier'}
-        {35, 'Yellow accent modifier'}
-        {36, 'Blue accent modifier'}
-        {37, '5-lane Orange, 4-lane Green accent modifier'}
-        {38, '5-lane Green accent modifier'}
-        {40, 'Red ghost modifier'}
-        {41, 'Yellow ghost modifier'}
-        {42, 'Blue ghost modifier'}
-        {43, '5-lane Orange, 4-lane Green ghost modifier'}
-        {44, '5-lane Green ghost modifier'}
-        {66, 'Yellow cymbal modifier'}
-        {67, 'Blue cymbal modifier'}
-        {68, 'Green cymbal modifier'}
-    }
-public static enum DifficultyIndex
+        {0, "Kick"},
+        {1, "Red"},
+        {2, "Yellow"},
+        {3, "Blue"},
+        {4, "5-lane Orange, 4-lane Green"},
+        {5, "5-lane Green"},
+        {32, "Expert + kick / 2x kick"},
+        {34, "Red accent modifier"},
+        {35, "Yellow accent modifier"},
+        {36, "Blue accent modifier"},
+        {37, "5-lane Orange, 4-lane Green accent modifier"},
+        {38, "5-lane Green accent modifier"},
+        {40, "Red ghost modifier"},
+        {41, "Yellow ghost modifier"},
+        {42, "Blue ghost modifier"},
+        {43, "5-lane Orange, 4-lane Green ghost modifier"},
+        {44, "5-lane Green ghost modifier"},
+        {66, "Yellow cymbal modifier"},
+        {67, "Blue cymbal modifier"},
+        {68, "Green cymbal modifier"}
+    };
+    public enum DifficultyIndex
     {
         Easy,
         Medium,
@@ -104,24 +104,8 @@ public static enum DifficultyIndex
     }
     //create the time teable that will be used to wait the time between the notes
 
-    private IEnumerator GetRhythm()
+    public (List<float>, List<int>) GetTables()
     {
-        int len = timeTable.Count;
-        for (int i = 0; i < len; i++)
-        {
-            yield return new WaitForSeconds(timeTable[i]);
-            int a = drumLines[i];
-            Debug.Log(a);
-            //what drum to play
-        }
-    }
-
-    //called by a button
-    public void PlaySong()
-    {
-        //wait for the song to load
-        audioSource.Play();
-        StartCoroutine(GetRhythm());
-
+        return (timeTable, drumLines);
     }
 }
