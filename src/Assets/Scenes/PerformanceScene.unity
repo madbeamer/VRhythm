@@ -251,7 +251,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 139.71826, w: 0}
+  m_margin: {x: -82.02368, y: 0, z: 139.71826, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -615,7 +615,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 116.12445, w: 0}
+  m_margin: {x: -13.730896, y: 0, z: 116.12445, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -931,11 +931,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8a716a9e9365c498ea0229cd706028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torusPrefab: {fileID: 1895288126699009453, guid: a43ab95b69116fc4c895517857c546fd, type: 3}
-  particlesPrefab: {fileID: 8714502493285849104, guid: 00ce56973bb9fea4bb0f3899e6e7f191, type: 3}
-  rythm:
-  - 1
-  - 1
 --- !u!23 &1189098829
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1020,6 +1015,7 @@ GameObject:
   - component: {fileID: 1254103495}
   - component: {fileID: 1254103494}
   - component: {fileID: 1254103496}
+  - component: {fileID: 1254103497}
   m_Layer: 0
   m_Name: Drums
   m_TagString: Untagged
@@ -1163,6 +1159,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1254103492}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae1bb5332326f684d9f98fb3e5ac7697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1254103497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254103492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6204739c2aa7de46bc6cb6cb8efe9c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -1249,8 +1257,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1254103495}
-        m_TargetAssemblyTypeName: Songs, Assembly-CSharp
+      - m_Target: {fileID: 1254103496}
+        m_TargetAssemblyTypeName: Manager, Assembly-CSharp
         m_MethodName: PlaySong
         m_Mode: 1
         m_Arguments:
@@ -1346,9 +1354,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8a716a9e9365c498ea0229cd706028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torusPrefab: {fileID: 1895288126699009453, guid: a43ab95b69116fc4c895517857c546fd, type: 3}
-  particlesPrefab: {fileID: 8714502493285849104, guid: 00ce56973bb9fea4bb0f3899e6e7f191, type: 3}
-  rythm: []
 --- !u!23 &1551431525
 MeshRenderer:
   m_ObjectHideFlags: 0

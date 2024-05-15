@@ -13,10 +13,11 @@ public class Songs : MonoBehaviour
     //for songs that have multiple difficulties i duplicate them for each difficulty
     private List<float> timeTable = new List<float>();
     private List<int> drumLines = new List<int>();
-    private HashSet<int> DrumsNeeded;
-    //for more info: https://github.com/TheNathannator/GuitarGame_ChartFormats/blob/main/doc/FileFormats/.chart/Drums.md
-    private Dictionary<int, string> difficultyDescriptions = new Dictionary<int, string>
+    private HashSet<string> DrumsNeeded = new HashSet<string>();
+    private const float shrinkingTime = 1.0f;
+    private Dictionary<int, string> Drums = new Dictionary<int, string>
     {
+        //for more info: https://github.com/TheNathannator/GuitarGame_ChartFormats/blob/main/doc/FileFormats/.chart/Drums.md
         {0, "Kick"},
         {1, "Red"},
         {2, "Yellow"},
@@ -48,7 +49,6 @@ public class Songs : MonoBehaviour
     public DifficultyIndex difficultyIndex;
     // Set the index of the folder to open
     public int songIndex;
-
 
     void Start()
     {
@@ -98,8 +98,12 @@ public class Songs : MonoBehaviour
                 timeTable.Add(float.Parse(parts[0]));
                 drumLines.Add(int.Parse(parts[1]));
             }
-            DrumsNeeded = new HashSet<int>(drumLines);
-            Debug.Log("Drums needed: " + string.Join(", ", DrumsNeeded));
+            timeTable[0] -= shrinkingTime; // account for the shrinking time
+            HashSet<int> keysDrums = new HashSet<int>(drumLines);
+            foreach (int key in keysDrums)
+            {
+                DrumsNeeded.Add(Drums[key]);
+            }
         }
     }
     //create the time teable that will be used to wait the time between the notes
