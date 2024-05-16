@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9126799304113916345, guid: d6e7425c66945414b86e637dea8ad3e2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.15
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 9126799304113916345, guid: d6e7425c66945414b86e637dea8ad3e2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -322,6 +322,63 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!1001 &1025475434
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1928529061835385675, guid: 735efd085f09a47d5856ac149789a438, type: 3}
+      propertyPath: m_Name
+      value: ConcertStage
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 735efd085f09a47d5856ac149789a438, type: 3}
 --- !u!1 &1186774129
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,68 +497,11 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!1001 &6872951720743264944
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1263350243572281841, guid: 735efd085f09a47d5856ac149789a438, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1928529061835385675, guid: 735efd085f09a47d5856ac149789a438, type: 3}
-      propertyPath: m_Name
-      value: concert-stage-includes-animated-lighting-in-cyclic-mods
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 735efd085f09a47d5856ac149789a438, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 846493667}
   - {fileID: 1186774131}
-  - {fileID: 6872951720743264944}
   - {fileID: 258875296}
+  - {fileID: 1025475434}
