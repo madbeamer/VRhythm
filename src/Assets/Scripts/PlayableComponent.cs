@@ -51,6 +51,7 @@ public class PlayableComponent : MonoBehaviour
     /// <param name="collision">Collision information, e.g. contact points and impact velocity</param>
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("COLLISION!");
         if (audioSource != null/* &&
             collision.relativeVelocity.magnitude > 2*/)
         {
