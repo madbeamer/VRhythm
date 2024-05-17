@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -895,7 +895,6 @@ GameObject:
   - component: {fileID: 1189098826}
   - component: {fileID: 1189098830}
   - component: {fileID: 1189098829}
-  - component: {fileID: 1189098827}
   - component: {fileID: 1189098831}
   m_Layer: 0
   m_Name: Hat
@@ -919,18 +918,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1254103493}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1189098827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1189098825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f8a716a9e9365c498ea0229cd706028, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &1189098829
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1148,7 +1135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c66cd6eebfc10aa41af3976bf97ad04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficultyIndex: 3
+  difficultyIndex: 0
   songIndex: 0
 --- !u!114 &1254103496
 MonoBehaviour:
@@ -1318,7 +1305,6 @@ GameObject:
   - component: {fileID: 1551431522}
   - component: {fileID: 1551431526}
   - component: {fileID: 1551431525}
-  - component: {fileID: 1551431523}
   - component: {fileID: 1551431527}
   m_Layer: 0
   m_Name: Drum
@@ -1342,18 +1328,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1254103493}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1551431523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1551431521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f8a716a9e9365c498ea0229cd706028, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &1551431525
 MeshRenderer:
   m_ObjectHideFlags: 0

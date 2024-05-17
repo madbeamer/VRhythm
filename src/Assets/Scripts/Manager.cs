@@ -41,7 +41,7 @@ public class Manager : MonoBehaviour
     {
         combo = 1.0;
         ptsNextCombo = 0;
-        comboText.text = $"1,0";
+        comboText.text = "1,0";
     }
 
     // Public method to set points

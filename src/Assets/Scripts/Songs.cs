@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
+using System.Globalization;
 
 public class Songs : MonoBehaviour
 {
@@ -95,7 +96,8 @@ public class Songs : MonoBehaviour
             while ((line = sr.ReadLine()) != null)
             {
                 string[] parts = line.Split('/');
-                timeTable.Add(float.Parse(parts[0]));
+                Debug.Log($"[DEBUG] {parts[0]}/{parts[1]} = {float.Parse(parts[0].Replace(",", "."), CultureInfo.InvariantCulture.NumberFormat)}/{int.Parse(parts[1])}");
+                timeTable.Add(float.Parse(parts[0].Replace(",", "."), CultureInfo.InvariantCulture.NumberFormat));
                 drumLines.Add(int.Parse(parts[1]));
             }
             timeTable[0] -= shrinkingTime; // account for the shrinking time

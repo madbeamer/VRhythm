@@ -17,6 +17,8 @@ public class closingCircle : MonoBehaviour
     private bool missed = true;
     private const float shrinkingTime = 1.0f;
 
+    private const int ERROR_DEDUCTION = -1;
+
     private IEnumerator ShrinkTorus(GameObject torus)
     {
         float startScale = torus.transform.localScale.x;
@@ -31,7 +33,7 @@ public class closingCircle : MonoBehaviour
         //multiplier and points change if you missed the timing
         if (missed)
         {
-            manager.AddPoints(-1);
+            manager.AddPoints(ERROR_DEDUCTION);
             manager.ResetCombo();
         }
         else
@@ -75,7 +77,7 @@ public class closingCircle : MonoBehaviour
             else
             {
                 //points lost if struck without a torus
-                manager.AddPoints(-1);
+                manager.AddPoints(ERROR_DEDUCTION);
                 manager.ResetCombo();
             }
         }
