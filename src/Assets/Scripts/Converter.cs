@@ -13,6 +13,7 @@ public class Converter : MonoBehaviour
     private List<(int, float)> syncLines = new List<(int, float)>();
     private List<int> drumTime = new List<int>();
     private string diffDrum;
+
     void Awake()
     {
 
@@ -28,6 +29,10 @@ public class Converter : MonoBehaviour
                     ReadChartFile(chart);
                     File.Delete(chart);
                     createCSV(song);
+                    drumLines.Clear();
+                    syncLines.Clear();
+                    drumTime.Clear();
+                    timeTable.Clear();
                 }
 
             }
@@ -85,11 +90,12 @@ public class Converter : MonoBehaviour
         }
 
         //not to efficent but i don't think it will be a problem
-        createTimeTable(drumTime, syncLines);
+        createTimeTable();
     }
     //create the time teable that will be used to wait the time between the notes
-    private void createTimeTable(List<int> drumTime, List<(int, float)> syncLines)
+    private void createTimeTable()
     {
+        syncLines.Add((int.MaxValue, 0.0f));
         int len = syncLines.Count;
         float prevSec = 0.0f;
         foreach (int tick in drumTime)
@@ -120,7 +126,7 @@ public class Converter : MonoBehaviour
             int len = timeTable.Count;
             for (int i = 0; i < len; i++)
             {
-                sw.WriteLine($"{timeTable[i]}/{drumLines[i]}");
+                sw.WriteLine($"{timeTable[i].ToString(CultureInfo.InvariantCulture)}/{drumLines[i]}");
             }
         }
     }

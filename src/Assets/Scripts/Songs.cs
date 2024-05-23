@@ -96,8 +96,7 @@ public class Songs : MonoBehaviour
             while ((line = sr.ReadLine()) != null)
             {
                 string[] parts = line.Split('/');
-                Debug.Log($"[DEBUG] {parts[0]}/{parts[1]} = {float.Parse(parts[0].Replace(",", "."), CultureInfo.InvariantCulture.NumberFormat)}/{int.Parse(parts[1])}");
-                timeTable.Add(float.Parse(parts[0].Replace(",", "."), CultureInfo.InvariantCulture.NumberFormat));
+                timeTable.Add(float.Parse(parts[0], CultureInfo.InvariantCulture.NumberFormat));
                 drumLines.Add(int.Parse(parts[1]));
             }
             timeTable[0] -= shrinkingTime; // account for the shrinking time

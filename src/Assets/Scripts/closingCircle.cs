@@ -19,6 +19,19 @@ public class closingCircle : MonoBehaviour
 
     private const int ERROR_DEDUCTION = -1;
 
+    void Start()
+    {
+        // points text
+        manager = GameObject.Find("Drums").GetComponent<Manager>();
+        particlesPrefab = Resources.Load<GameObject>("particlesPrefab");
+        GameObject torusPrefab = Resources.Load<GameObject>("torusPrefab");
+        //diameter of the drums and position
+        radiusDrum = transform.localScale.x / 2; //maybe using the collider size
+        //create modified clone of torus
+        changedTorus = Instantiate(torusPrefab, transform.position + new Vector3(0, transform.localScale.y / 2, 0), transform.rotation);
+        changedTorus.transform.localScale = new Vector3(radiusDrum, 0.1f, radiusDrum);
+    }
+
     private IEnumerator ShrinkTorus(GameObject torus)
     {
         float startScale = torus.transform.localScale.x;
@@ -61,7 +74,7 @@ public class closingCircle : MonoBehaviour
                 float radiusTorus = smallTorus.transform.localScale.x / 2;
 
                 //particle system, change color and multiplier depending on the radius
-                GameObject particles = Instantiate(particlesPrefab, transform.position, Quaternion.Euler(-90f, 0f, 0f));
+                GameObject particles = Instantiate(particlesPrefab, transform.position, Quaternion.Euler(-90f, 0f, 0f));//change rotation of the particles
                 particles.transform.localScale = new Vector3(radiusTorus, radiusTorus, 1);
 
                 //add points
@@ -82,18 +95,5 @@ public class closingCircle : MonoBehaviour
             }
         }
 
-    }
-
-    void Start()
-    {
-        // points text
-        manager = GameObject.Find("Drums").GetComponent<Manager>();
-        particlesPrefab = Resources.Load<GameObject>("particlesPrefab");
-        GameObject torusPrefab = Resources.Load<GameObject>("torusPrefab");
-        //diameter of the drums and position
-        radiusDrum = transform.localScale.x / 2;
-        //create modified clone of torus
-        changedTorus = Instantiate(torusPrefab, transform.position + new Vector3(0, transform.localScale.y / 2, 0), transform.rotation);
-        changedTorus.transform.localScale = new Vector3(radiusDrum, torusPrefab.transform.localScale.y, radiusDrum);
     }
 }
