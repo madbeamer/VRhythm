@@ -17,8 +17,6 @@ public class closingCircle : MonoBehaviour
     private bool missed = true;
     private const float shrinkingTime = 1.0f;
 
-    private const int ERROR_DEDUCTION = -1;
-
     void Start()
     {
         // points text
@@ -46,7 +44,6 @@ public class closingCircle : MonoBehaviour
         //multiplier and points change if you missed the timing
         if (missed)
         {
-            manager.AddPoints(ERROR_DEDUCTION);
             manager.ResetCombo();
         }
         else
@@ -78,11 +75,10 @@ public class closingCircle : MonoBehaviour
                 particles.transform.localScale = new Vector3(radiusTorus, radiusTorus, 1);
 
                 //add points
-                int newPointsCombo = (int)(radiusDrum / radiusTorus);
-                manager.AddptsNextCombo(newPointsCombo);
+                int newPointsCombo = (int)(radiusDrum / radiusTorus); //multiply by int maybe
                 //current points
-                int newPoints = (int)(newPointsCombo * manager.GetCombo());
-                manager.AddPoints(newPoints);
+                int newPoints = (int)(newPointsCombo * manager.GetCombo()); //could round to same number
+                manager.AddPoints(newPoints, newPointsCombo);
                 //destroy the torus
                 missed = false;
                 smallTorus.transform.localScale = new Vector3(0, 0, 0);
@@ -90,7 +86,6 @@ public class closingCircle : MonoBehaviour
             else
             {
                 //points lost if struck without a torus
-                manager.AddPoints(ERROR_DEDUCTION);
                 manager.ResetCombo();
             }
         }

@@ -44,37 +44,41 @@ public class Manager : MonoBehaviour
         }
     }
     // Public method to set points
-    public void AddPoints(int value)
+    public void AddPoints(int pts, int ptsCombo)
     {
-        points += value;
+        points += pts;
         pointsText.text = points.ToString();
+
+        ptsNextCombo += ptsCombo;
+        if (ptsNextCombo >= maxPoints)
+        {
+            combo += 0.1;
+            comboText.text = "x" + combo.ToString("F1", CultureInfo.InvariantCulture);
+            ptsNextCombo -= maxPoints;
+        }
     }
+
     public double GetCombo()
     {
         return combo;
     }
+
     public void ResetCombo()
     {
+        points -= 1;
+        pointsText.text = points.ToString();
+
         combo = 1.0;
         ptsNextCombo = 0;
-        comboText.text = "1.0";
+        comboText.text = "x1.0";
     }
 
     // Public method to set points
-    public void AddptsNextCombo(int value)
-    {
-        ptsNextCombo += value;
-        if (ptsNextCombo >= maxPoints)
-        {
-            combo += 0.1;
-            comboText.text = $"x{combo.ToString("F1", CultureInfo.InvariantCulture)}";
-            ptsNextCombo -= maxPoints;
-        }
-    }
     public bool IsPlaying()
     {
         return isPlaying;
     }
+    
     private IEnumerator GetRhythm(List<float> timeTable, List<int> drumLines)
     {
         int len = timeTable.Count;
