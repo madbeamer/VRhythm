@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 6389599520127547475}
   - component: {fileID: 2660728774292463797}
   m_Layer: 0
-  m_Name: DrumMedium
+  m_Name: Tom2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

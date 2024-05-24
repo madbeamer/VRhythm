@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Globalization;
+using System;
 //adding here the start song??
 public class Manager : MonoBehaviour
 {
@@ -15,24 +16,38 @@ public class Manager : MonoBehaviour
     private int ptsNextCombo = 0;
     private const int maxPoints = 100;
     private bool isPlaying = false;
+    private string[] keytoDrum = new string[] {
+        "Tom1",
+        "Tom2",
+        "FloorTom",
+        "Snare",
+        "Kick", 
+        "Crash",
+        "Ride", 
+        "Hihat",
+    };
+
+    private closingCircle[] drums = new closingCircle[8];
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         pointsText = GameObject.Find("PointsText").GetComponent<TextMeshProUGUI>();
         comboText = GameObject.Find("ComboText").GetComponent<TextMeshProUGUI>();
+        
         foreach (Transform drum in transform)
         {
+            int index = Array.IndexOf(keytoDrum, drum.name);
             GameObject collider = drum.Find("Collider").gameObject;
             collider.AddComponent<closingCircle>();
-            children.Add(collider);
+            drums[index] = collider.GetComponent<closingCircle>();
         }
     }
     // Public method to set points
     public void AddPoints(int value)
     {
         points += value;
-        pointsText.text = $"{points}";
+        pointsText.text = points.ToString();
     }
     public double GetCombo()
     {
@@ -65,9 +80,11 @@ public class Manager : MonoBehaviour
         int len = timeTable.Count;
         for (int i = 0; i < len; i++)
         {
-            yield return new WaitForSeconds(timeTable[i]);//if it is 0 it still loses 1 frame?
-            int a = drumLines[i];
-            children[0].GetComponent<closingCircle>().SpawnTorus();
+            if (timeTable[i] != 0)
+            {
+                yield return new WaitForSeconds(timeTable[i]);
+            }
+            drums[drumLines[i]].SpawnTorus();
             //what drum to play
         }
         isPlaying = false;
@@ -82,6 +99,5 @@ public class Manager : MonoBehaviour
         //wait for the song to load
         audioSource.Play();
         StartCoroutine(GetRhythm(timeTable, drumLines));
-
     }
 }

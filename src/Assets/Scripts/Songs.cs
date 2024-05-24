@@ -14,32 +14,8 @@ public class Songs : MonoBehaviour
     //for songs that have multiple difficulties i duplicate them for each difficulty
     private List<float> timeTable = new List<float>();
     private List<int> drumLines = new List<int>();
-    private HashSet<string> DrumsNeeded = new HashSet<string>();
+    private HashSet<int> keysDrums;
     private const float shrinkingTime = 1.0f;
-    private Dictionary<int, string> Drums = new Dictionary<int, string>
-    {
-        //for more info: https://github.com/TheNathannator/GuitarGame_ChartFormats/blob/main/doc/FileFormats/.chart/Drums.md
-        {0, "Kick"},
-        {1, "Red"},
-        {2, "Yellow"},
-        {3, "Blue"},
-        {4, "5-lane Orange, 4-lane Green"},
-        {5, "5-lane Green"},
-        {32, "Expert + kick / 2x kick"},
-        {34, "Red accent modifier"},
-        {35, "Yellow accent modifier"},
-        {36, "Blue accent modifier"},
-        {37, "5-lane Orange, 4-lane Green accent modifier"},
-        {38, "5-lane Green accent modifier"},
-        {40, "Red ghost modifier"},
-        {41, "Yellow ghost modifier"},
-        {42, "Blue ghost modifier"},
-        {43, "5-lane Orange, 4-lane Green ghost modifier"},
-        {44, "5-lane Green ghost modifier"},
-        {66, "Yellow cymbal modifier"},
-        {67, "Blue cymbal modifier"},
-        {68, "Green cymbal modifier"}
-    };
     public enum DifficultyIndex
     {
         Easy,
@@ -100,11 +76,7 @@ public class Songs : MonoBehaviour
                 drumLines.Add(int.Parse(parts[1]));
             }
             timeTable[0] -= shrinkingTime; // account for the shrinking time
-            HashSet<int> keysDrums = new HashSet<int>(drumLines);
-            foreach (int key in keysDrums)
-            {
-                DrumsNeeded.Add(Drums[key]);
-            }
+            keysDrums = new HashSet<int>(drumLines);
         }
     }
     //create the time teable that will be used to wait the time between the notes
@@ -112,5 +84,9 @@ public class Songs : MonoBehaviour
     public (List<float>, List<int>) GetTables()
     {
         return (timeTable, drumLines);
+    }
+    public HashSet<int> GetKeysDrums()
+    {
+        return keysDrums;
     }
 }

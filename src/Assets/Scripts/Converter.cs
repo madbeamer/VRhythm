@@ -13,6 +13,30 @@ public class Converter : MonoBehaviour
     private List<(int, float)> syncLines = new List<(int, float)>();
     private List<int> drumTime = new List<int>();
     private string diffDrum;
+    private Dictionary<int, int> Drums = new Dictionary<int, int>
+    {
+        //for more info: https://github.com/TheNathannator/GuitarGame_ChartFormats/blob/main/doc/FileFormats/.chart/Drums.md
+        {0, 4},
+        {1, 3},
+        {2, 7},
+        {3, 5},
+        {4, 6}, //when 4 lanes?
+        {5, 0},
+        {32, 4},
+        {34, 3},
+        {35, 7},
+        {36, 5},
+        {37, 6},
+        {38, 0},
+        {40, 3},
+        {41, 7},
+        {42, 5},
+        {43, 6},
+        {44, 0},
+        {66, 7},
+        {67, 5},
+        {68, 0}
+    };
 
     void Awake()
     {
@@ -84,7 +108,7 @@ public class Converter : MonoBehaviour
                     parts = line.Split(' ');
                     drumTime.Add(int.Parse(parts[2]));
                     //type of drum
-                    drumLines.Add(int.Parse(parts[5]));
+                    drumLines.Add(Drums[int.Parse(parts[5])]);
                 }
             }
         }

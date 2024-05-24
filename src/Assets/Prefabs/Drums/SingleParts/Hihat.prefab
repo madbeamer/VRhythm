@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3164496967270156757}
   - component: {fileID: 1430622240598206998}
   m_Layer: 0
-  m_Name: HihatDouble
+  m_Name: Hihat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
