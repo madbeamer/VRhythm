@@ -4,58 +4,78 @@ using UnityEngine;
 using UnityEngine.UI; // Import the necessary namespace for UI components
 using TMPro;
 
-
 public class SongSelector : MonoBehaviour
 {
-    List<string> easySongs = new List<string> {
-        "2 Tales of The Working Class",
-        "Vril Society",
-        "Swan Song",
-        "Living In a Dream",
+    // Step 1: Define a class to represent the song
+    class Song
+    {
+        public string SongName { get; set; }
+        public string Difficulty { get; set; }
+
+        public Song(string songName, string difficulty)
+        {
+            SongName = songName;
+            Difficulty = difficulty;
+        }
+    }
+
+    // Step 2: Initialize a list with song objects
+    List<Song> songList = new List<Song>
+    {
+        new Song("2 Tales of The Working Class", "easy"),
+        new Song("Vril Society", "medium"),
+        new Song("Swan Song", "hard"),
+        new Song("Living In a Dream", "expert")
     };
+
+    public int SongIndex = 0;
+
+
     public GameObject EasyButton;
-
     public GameObject MediumButton;
-
     public GameObject HardButton;
-
     public GameObject ExpertButton;
-
     public GameObject SongTitle;
-
-    public int SongIndex;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        setSongIndexTo(SongIndex);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+    }
+
+    public void changeDifficultyTo(string difficulty)
+    {
+        for (int i = 0; i < songList.Count; i++)
+        {
+            if (songList[i].Difficulty == difficulty)
+            {
+                setSongIndexTo(i);
+                return;
+            }
+        }
     }
 
     public void increaseSongIndex()
     {
-        setSongIndexTo((SongIndex + 1)%4);
+        setSongIndexTo((SongIndex + 1) % songList.Count);
     }
 
     public void decreaseSongIndex()
     {
-        setSongIndexTo((SongIndex - 1)%4);
+        setSongIndexTo((SongIndex - 1 + songList.Count) % songList.Count);
     }
 
     public void setSongIndexTo(int newSongIndex)
     {
         updateTitle(newSongIndex);
-        if (newSongIndex == SongIndex)
-        {
-            return;
-        }
-        if (newSongIndex == 0)
+
+        if (songList[newSongIndex].Difficulty == "easy")
         {
             EasyButton.GetComponent<Image>().color = new Color32(255, 0, 226, 255);
             MediumButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
@@ -64,7 +84,7 @@ public class SongSelector : MonoBehaviour
             SongIndex = newSongIndex;
             return;
         }
-        if (newSongIndex == 1)
+        if (songList[newSongIndex].Difficulty == "medium")
         {
             EasyButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
             MediumButton.GetComponent<Image>().color = new Color32(255, 0, 226, 255);
@@ -73,7 +93,7 @@ public class SongSelector : MonoBehaviour
             SongIndex = newSongIndex;
             return;
         }
-        if (newSongIndex == 2)
+        if (songList[newSongIndex].Difficulty == "hard")
         {
             EasyButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
             MediumButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
@@ -82,7 +102,7 @@ public class SongSelector : MonoBehaviour
             SongIndex = newSongIndex;
             return;
         }
-        if (newSongIndex == 3)
+        if (songList[newSongIndex].Difficulty == "expert")
         {
             EasyButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
             MediumButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
@@ -95,9 +115,6 @@ public class SongSelector : MonoBehaviour
 
     void updateTitle(int newSongIndex)
     {
-        SongTitle.GetComponent<TextMeshProUGUI>().text = easySongs[newSongIndex];
-        
-        return;
+        SongTitle.GetComponent<TextMeshProUGUI>().text = songList[newSongIndex].SongName;
     }
-    
 }
