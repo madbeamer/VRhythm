@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; // Import the necessary namespace for UI components
 using TMPro;
+using System.IO;
+using System;
 
 public class SongSelector : MonoBehaviour
 {
@@ -18,14 +20,12 @@ public class SongSelector : MonoBehaviour
             Difficulty = difficulty;
         }
     }
+    private string dir = Path.Combine("Assets", "Audio", "Songs");
 
     // Step 2: Initialize a list with song objects
     List<Song> songList = new List<Song>
     {
-        new Song("2 Tales of The Working Class", "easy"),
-        new Song("Vril Society", "medium"),
-        new Song("Swan Song", "hard"),
-        new Song("Living In a Dream", "expert")
+        
     };
 
     public int SongIndex = 0;
@@ -41,7 +41,37 @@ public class SongSelector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        string easy_folder = Path.Combine(dir, "easy");
+        
+        //get the folder of the song
+        string[] easy_folder_songs = Directory.GetDirectories(easy_folder);
+        for (int i = 0; i < easy_folder_songs.Length; i++)
+        {
+            songList.Add(new Song(Path.GetFileName(easy_folder_songs[i]), "easy"));
+        }
 
+        string medium_folder = Path.Combine(dir, "medium");
+        string[] medium_folder_songs = Directory.GetDirectories(medium_folder);
+        for (int i = 0; i < medium_folder_songs.Length; i++)
+        {
+            songList.Add(new Song(Path.GetFileName(medium_folder_songs[i]), "medium"));
+        }
+
+        string hard_folder = Path.Combine(dir, "hard");
+        string[] hard_folder_songs = Directory.GetDirectories(hard_folder);
+        for (int i = 0; i < hard_folder_songs.Length; i++)
+        {
+            songList.Add(new Song(Path.GetFileName(hard_folder_songs[i]), "hard"));
+        }
+
+        string expert_folder = Path.Combine(dir, "expert");
+        string[] expert_folder_songs = Directory.GetDirectories(expert_folder);
+        for (int i = 0; i < expert_folder_songs.Length; i++)
+        {
+            songList.Add(new Song(Path.GetFileName(expert_folder_songs[i]), "expert"));
+        }
+
+        setSongIndexTo(SongIndex);
     }
 
     // Update is called once per frame
