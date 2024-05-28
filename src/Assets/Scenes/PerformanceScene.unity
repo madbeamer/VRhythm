@@ -876,6 +876,11 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!4 &214691725 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1114142990176930272, guid: 935b0b95c94eb084e91476aeb5ca1b3e, type: 3}
+  m_PrefabInstance: {fileID: 1581476765}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &259144880
 GameObject:
   m_ObjectHideFlags: 0
@@ -4243,8 +4248,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1239784897}
-  - {fileID: 907716526}
-  - {fileID: 865407137}
+  - {fileID: 851689879}
+  - {fileID: 214691725}
   - {fileID: 728963088}
   - {fileID: 1471988435}
   - {fileID: 1088336558}
@@ -5410,14 +5415,9 @@ MonoBehaviour:
   m_UseLocalSpace: 1
   m_AngleStabilization: 20
   m_PositionStabilization: 0.25
---- !u!4 &865407137 stripped
+--- !u!4 &851689879 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 7253013080043858428, guid: 935b0b95c94eb084e91476aeb5ca1b3e, type: 3}
-  m_PrefabInstance: {fileID: 1581476765}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &907716526 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1114142990176930272, guid: 7a494dcc07a9d4111a769dae6851ffa9, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7253013080043858428, guid: 7a494dcc07a9d4111a769dae6851ffa9, type: 3}
   m_PrefabInstance: {fileID: 535675157}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &918791524
@@ -7221,6 +7221,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 44997950}
+  EasyButton: {fileID: 810091913}
+  MediumButton: {fileID: 1452345670}
+  HardButton: {fileID: 35879684}
+  ExpertButton: {fileID: 469462086}
 --- !u!1 &1300254760
 GameObject:
   m_ObjectHideFlags: 0

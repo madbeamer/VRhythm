@@ -18,6 +18,12 @@ public class SongSelectorTest : MonoBehaviour
     private List<int> drumLines = new List<int>();
     private string dir = Path.Combine("Assets", "Audio", "Songs");
     private TextMeshProUGUI SongTitle;
+
+    public GameObject EasyButton;
+    public GameObject MediumButton;
+    public GameObject HardButton;
+    public GameObject ExpertButton;
+
     void Start()
     {
         SongTitle = GameObject.Find("SongTitle").GetComponent<TextMeshProUGUI>();
@@ -52,6 +58,39 @@ public class SongSelectorTest : MonoBehaviour
         Index = ((Index % len) + len) % len;
         string song = difficulty_folder_songs[Index];
         SongTitle.text = Path.GetFileName(song);
+        if (Difficulty == "Easy")
+        {
+            EasyButton.GetComponent<Image>().color = new Color32(255, 0, 226, 255);
+            MediumButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
+            HardButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
+            ExpertButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
+            return;
+        }
+        if (Difficulty == "Medium")
+        {
+            EasyButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
+            MediumButton.GetComponent<Image>().color = new Color32(255, 0, 226, 255);
+            HardButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
+            ExpertButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
+            return;
+        }
+        if (Difficulty == "Hard")
+        {
+            EasyButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
+            MediumButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
+            HardButton.GetComponent<Image>().color = new Color32(255, 0, 226, 255);
+            ExpertButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
+            return;
+        }
+        if (Difficulty == "Expert")
+        {
+            EasyButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
+            MediumButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
+            HardButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
+            ExpertButton.GetComponent<Image>().color = new Color32(255, 0, 226, 255);
+            return;
+        }
+
     }
 
     //attach to start song button
