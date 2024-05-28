@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -12,39 +14,71 @@ public class DrumstickToggler : MonoBehaviour
     [SerializeField]
     private bool rightController = false;
     [SerializeField]
-    private InputHelpers.Button toggleButton; // The button to toggle the GameObject
+    private bool activeOnWake = false;
     #endregion
 
     #region Private fields
-    private bool active = false;
-    private InputDevice controller; // Reference to the XR controller
-    private InputFeatureUsage<bool> toggleButtonUsage; // InputFeatureUsage for the toggle button
+    private bool active;
+    private bool previousStatePressed = false;
+    InputFeatureUsage<bool> toggleButton;
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        toggleButtonUsage = InputHelpers.(toggleButton);
-        gameObject.SetActive(active);
-        if (leftController)
-        {
-            controller = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
-        } else if (rightController)
-        {
-            controller = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
-        }
+        active = activeOnWake;
+
+        toggleButton = UnityEngine.XR.CommonUsages.primaryButton;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (controller != null)
+        Debug.Log("Checking if button was specified at all");
+        if (toggleButton != null)
         {
-            if (controller.isValid && controller.TryReadSingleValue(toggleButton, out float buttonState) && (buttonState < 1e-05))
+            Debug.Log("Button was specified. Checking whether left or right controller should be used");
+            UnityEngine.XR.InputDevice? device = null;
+            if (leftController)
             {
-                active = !active;
-                gameObject.SetActive(active);
+                Debug.Log("Left controller should be used! Getting left controller");
+                List<UnityEngine.XR.InputDevice> leftHandControllers = new List<UnityEngine.XR.InputDevice>();
+                InputDevices.GetDevicesAtXRNode(XRNode.LeftHand, leftHandControllers);
+                device = leftHandControllers[0];
+                Debug.Log("Left controller obtained!");
+            } else if (rightController)
+            {
+                Debug.Log("Right controller should be used! Getting right controller");
+                List<UnityEngine.XR.InputDevice> rightHandControllers = new List<UnityEngine.XR.InputDevice>();
+                InputDevices.GetDevicesAtXRNode(XRNode.RightHand, rightHandControllers);
+                device = rightHandControllers[0];
+                Debug.Log("Right controller obtained!");
             }
+            if (device.Value.IsPressed(InputHelpers.Button.PrimaryButton, out bool paolo) && paolo)
+
+            Debug.Log($"Checking all conditions: has value = {device.HasValue}, TryGetFeatureValue = {device.Value.TryGetFeatureValue(toggleButton, out bool tempButtonState)}, buttonState = {tempButtonState}");
+            bool buttonPressed = false;
+            if (!previousStatePressed && device.HasValue && device.Value.TryGetFeatureValue(toggleButton, out buttonPressed) && buttonPressed)
+            {
+                previousStatePressed = true;
+                Debug.Log($"Toggling active state of drumstick. Is active? {active}, will become {!active}");
+                ToggleGameObject();
+            } else if (previousStatePressed && device.HasValue && device.Value.TryGetFeatureValue(toggleButton, out buttonPressed) && !buttonPressed)
+            {
+                previousStatePressed = false;
+            }
+        }
+    }
+
+    private void ToggleGameObject()
+    {
+        active = !active;
+        if (active)
+        {
+            gameObject.transform.localScale = new(1.0f, 1.0f, 1.0f);
+        } else
+        {
+            gameObject.transform.localScale = new(0.0f, 0.0f, 0.0f);
         }
     }
 }
