@@ -23,10 +23,7 @@ public class SongSelector : MonoBehaviour
     private string dir = Path.Combine("Assets", "Audio", "Songs");
 
     // Step 2: Initialize a list with song objects
-    List<Song> songList = new List<Song>
-    {
-        
-    };
+    List<Song> songList = new List<Song>{};
 
     public int SongIndex = 0;
 
