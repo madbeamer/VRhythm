@@ -26,6 +26,7 @@ public class Manager : MonoBehaviour
         "Ride", 
         "Hihat",
     };
+    private const float shrinkingTime = 1.0f;
 
     private closingCircle[] drums = new closingCircle[8];
     // Start is called before the first frame update
@@ -100,6 +101,7 @@ public class Manager : MonoBehaviour
 
         isPlaying = true;
         (List<float> timeTable, List<int> drumLines) = transform.GetComponent<Songs>().GetTables();
+        timeTable[0] -= shrinkingTime;
         //wait for the song to load
         audioSource.Play();
         StartCoroutine(GetRhythm(timeTable, drumLines));
