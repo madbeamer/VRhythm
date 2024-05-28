@@ -7,7 +7,6 @@ using System;
 //adding here the start song??
 public class Manager : MonoBehaviour
 {
-    private AudioSource audioSource;
     private List<GameObject> children = new List<GameObject>();
     private TextMeshProUGUI pointsText;
     private TextMeshProUGUI comboText;
@@ -21,21 +20,22 @@ public class Manager : MonoBehaviour
         "Tom2",
         "FloorTom",
         "Snare",
-        "Kick", 
+        "Kick",
         "Crash",
-        "Ride", 
+        "Ride",
         "Hihat",
     };
+    public AudioSource audioSource;
+    public GameObject SongSelector;
     private const float shrinkingTime = 1.0f;
 
     private closingCircle[] drums = new closingCircle[8];
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
         pointsText = GameObject.Find("PointsText").GetComponent<TextMeshProUGUI>();
         comboText = GameObject.Find("ComboText").GetComponent<TextMeshProUGUI>();
-        
+
         foreach (Transform drum in transform)
         {
             int index = Array.IndexOf(keytoDrum, drum.name);
@@ -79,7 +79,7 @@ public class Manager : MonoBehaviour
     {
         return isPlaying;
     }
-    
+
     private IEnumerator GetRhythm(List<float> timeTable, List<int> drumLines)
     {
         int len = timeTable.Count;
@@ -100,7 +100,7 @@ public class Manager : MonoBehaviour
     {
 
         isPlaying = true;
-        (List<float> timeTable, List<int> drumLines) = transform.GetComponent<Songs>().GetTables();
+        (List<float> timeTable, List<int> drumLines) = SongSelector.GetComponent<SongSelectorTest>().GetTables();
         timeTable[0] -= shrinkingTime;
         //wait for the song to load
         audioSource.Play();

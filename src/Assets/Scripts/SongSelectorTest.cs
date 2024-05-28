@@ -14,7 +14,6 @@ public class SongSelectorTest : MonoBehaviour
     private string Difficulty = "easy";
     private int Index = 0;
     public AudioSource audioSource;
-    public GameObject drumStore;
     private List<float> timeTable = new List<float>();
     private List<int> drumLines = new List<int>();
     private string dir = Path.Combine("Assets", "Audio", "Songs");
@@ -64,7 +63,19 @@ public class SongSelectorTest : MonoBehaviour
 
         StartCoroutine(LoadClip(Path.Combine(folder_song, "song.wav")));
         ReadCsv(Path.Combine(folder_song, "time_notes.txt"));
-        drumStore.SetActive(true);
+        GameObject drums = GameObject.Find("Drums");
+        HashSet<int> DrumsNeeded = new HashSet<int>(drumLines);
+        for (int i = 0; i < drums.transform.childCount; i++)
+        {
+            if (DrumsNeeded.Contains(i))
+            {
+                drums.transform.GetChild(i).gameObject.SetActive(true);
+            }
+            else
+            {
+                Destroy(drums.transform.GetChild(i).gameObject);
+            }
+        }
         //start the song and remove the buttons
     }
     private void ReadCsv(string filePath)
@@ -98,12 +109,8 @@ public class SongSelectorTest : MonoBehaviour
             }
         }
     }
-    public (List<float>, List<int>) getSong()
+    public (List<float>, List<int>) GetTables()
     {
         return (timeTable, drumLines);
-    }
-    public HashSet<int> getDrumsNeeded()
-    {
-        return new HashSet<int>(drumLines);
     }
 }
