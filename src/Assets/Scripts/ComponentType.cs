@@ -6,6 +6,8 @@ public enum ComponentType
 {
     Snare,
     Tom,
+    FloorTom,
+    Kick,
     HiHatOpen,
     HiHatClosed,
     Ride,
