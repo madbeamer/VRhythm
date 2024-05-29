@@ -8,13 +8,15 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class DrumstickToggler : MonoBehaviour
 {
-    #region Public fields
+    #region Serialized fields
     [SerializeField]
     private bool leftController = true;
     [SerializeField]
     private bool rightController = false;
     [SerializeField]
     private bool activeOnWake = false;
+    [SerializeField]
+    private Collider collider;
     #endregion
 
     #region Private fields
@@ -27,8 +29,11 @@ public class DrumstickToggler : MonoBehaviour
     void Start()
     {
         active = activeOnWake;
-
         toggleButton = UnityEngine.XR.CommonUsages.primaryButton;
+
+        if (collider != null) {
+            collider = gameObject.GetComponent<Collider>();
+        }
     }
 
     // Update is called once per frame
@@ -76,9 +81,11 @@ public class DrumstickToggler : MonoBehaviour
         if (active)
         {
             gameObject.transform.localScale = new(1.0f, 1.0f, 1.0f);
+            collider.enabled = true;
         } else
         {
             gameObject.transform.localScale = new(0.0f, 0.0f, 0.0f);
+            collider.enabled = false;
         }
     }
 }

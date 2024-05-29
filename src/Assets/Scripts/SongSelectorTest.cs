@@ -118,6 +118,7 @@ public class SongSelectorTest : MonoBehaviour
     }
     private void ReadCsv(string filePath)
     {
+        Debug.Log($"Getting CSV from {filePath}");
         using (StreamReader sr = new StreamReader(filePath))
         {
             string line;
@@ -149,6 +150,7 @@ public class SongSelectorTest : MonoBehaviour
     }
     public (List<float>, List<int>) GetTables()
     {
+        // Returning same timetable and drumlines for all songs????
         return (timeTable, drumLines);
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6871739941658582645}
   - component: {fileID: 8396023889677265720}
   - component: {fileID: 2143659149325447516}
-  - component: {fileID: 3832134125201891888}
+  - component: {fileID: 2936404804897372504}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -145,8 +145,8 @@ AudioSource:
   m_GameObject: {fileID: 403306029811353774}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8792598737780214854, guid: b6b1fedcd6d3d4845a371b3b1854edcf, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 12a58a5212a0ae54e93d96276b1a2282, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -232,7 +232,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3832134125201891888
+--- !u!114 &2936404804897372504
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,12 +241,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 403306029811353774}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19527b4f337c1b84ba555edd5ed61eb9, type: 3}
+  m_Script: {fileID: 11500000, guid: 49e714037909e4640a559e51d713f0bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 2143659149325447516}
-  altIndex: 0
-  componentType: 3
 --- !u!1 &640117158446202570
 GameObject:
   m_ObjectHideFlags: 0

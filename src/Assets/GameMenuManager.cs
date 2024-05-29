@@ -21,10 +21,6 @@ public class GameMenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        List<UnityEngine.XR.InputDevice> leftHandControllers = new List<UnityEngine.XR.InputDevice>();
-        InputDevices.GetDevicesAtXRNode(XRNode.LeftHand, leftHandControllers);
-        device = leftHandControllers[0];
-
         // Set variable togglebutton to CommonUsages secondary button.
         toggleButton = UnityEngine.XR.CommonUsages.secondaryButton;
     }
@@ -32,21 +28,26 @@ public class GameMenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool buttonPressed = false;
-        if (!previousStatePressed && device.HasValue && device.Value.TryGetFeatureValue(toggleButton, out buttonPressed) && buttonPressed)
-        // if (showButton.action.WasPressedThisFrame())
-        {
-            previousStatePressed = true;
-            Debug.Log("Show button pressed");
-            menu.SetActive(!menu.activeSelf);
-            menu.transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
-        }
-         else if (previousStatePressed && device.HasValue && device.Value.TryGetFeatureValue(toggleButton, out buttonPressed) && !buttonPressed)
-        {
-            previousStatePressed = false;
-        }
+        List<UnityEngine.XR.InputDevice> leftHandControllers = new List<UnityEngine.XR.InputDevice>();
+        InputDevices.GetDevicesAtXRNode(XRNode.LeftHand, leftHandControllers);
+        if (leftHandControllers.Count > 0) {
+            device = leftHandControllers[0];
+            bool buttonPressed = false;
+            if (!previousStatePressed && device.HasValue && device.Value.TryGetFeatureValue(toggleButton, out buttonPressed) && buttonPressed)
+            // if (showButton.action.WasPressedThisFrame())
+            {
+                previousStatePressed = true;
+                Debug.Log("Show button pressed");
+                menu.SetActive(!menu.activeSelf);
+                menu.transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
+            }
+            else if (previousStatePressed && device.HasValue && device.Value.TryGetFeatureValue(toggleButton, out buttonPressed) && !buttonPressed)
+            {
+                previousStatePressed = false;
+            }
 
-        menu.transform.LookAt(new Vector3(head.position.x, menu.transform.position.y, head.position.z));
-        menu.transform.forward *= -1;
+            menu.transform.LookAt(new Vector3(head.position.x, menu.transform.position.y, head.position.z));
+            menu.transform.forward *= -1;
+        }
     }
 }
