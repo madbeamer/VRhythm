@@ -8,8 +8,8 @@ using System;
 public class Manager : MonoBehaviour
 {
     private List<GameObject> children = new List<GameObject>();
-    private TextMeshProUGUI pointsText;
-    private TextMeshProUGUI comboText;
+    public TextMeshProUGUI pointsText;
+    public TextMeshProUGUI comboText;
     private int points = 0;
     private double combo = 1.0;
     private int ptsNextCombo = 0;
@@ -26,15 +26,15 @@ public class Manager : MonoBehaviour
         "Hihat",
     };
     public AudioSource audioSource;
-    public GameObject SongSelector;
     private const float shrinkingTime = 1.0f;
 
     private closingCircle[] drums = new closingCircle[8];
+    public GameObject PlayingMenu;
+    public GameObject SongSelector;
     // Start is called before the first frame update
     void Start()
     {
-        pointsText = GameObject.Find("PointsText").GetComponent<TextMeshProUGUI>();
-        comboText = GameObject.Find("ComboText").GetComponent<TextMeshProUGUI>();
+
 
         foreach (Transform drum in transform)
         {
@@ -83,8 +83,10 @@ public class Manager : MonoBehaviour
     private IEnumerator GetRhythm(List<float> timeTable, List<int> drumLines)
     {
         int len = timeTable.Count;
+        Debug.Log($"Length: {len}");
         for (int i = 0; i < len; i++)
         {
+            Debug.Log($"{i}: {timeTable[i]}");
             if (timeTable[i] != 0)
             {
                 yield return new WaitForSeconds(timeTable[i]);
@@ -105,5 +107,12 @@ public class Manager : MonoBehaviour
         //wait for the song to load
         audioSource.Play();
         StartCoroutine(GetRhythm(timeTable, drumLines));
+        foreach (Transform drum in transform)
+        {
+            GameObject collider = drum.Find("Collider").gameObject;
+            collider.GetComponent<AudioSource>().enabled = false;
+        }
+        PlayingMenu.SetActive(true);
+        SongSelector.SetActive(false);
     }
 }

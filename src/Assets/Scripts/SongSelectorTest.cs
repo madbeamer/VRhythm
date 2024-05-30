@@ -18,6 +18,7 @@ public class SongSelectorTest : MonoBehaviour
     private List<int> drumLines = new List<int>();
     private string dir = Path.Combine("Assets", "Audio", "Songs");
     private TextMeshProUGUI SongTitle;
+    public GameObject Manager;
 
     public GameObject EasyButton;
     public GameObject MediumButton;
@@ -59,40 +60,45 @@ public class SongSelectorTest : MonoBehaviour
         Index = ((Index % len) + len) % len;
         string song = difficulty_folder_songs[Index];
         SongTitle.text = Path.GetFileName(song);
+        Color32 normalColor = new Color32(4, 80, 132, 255);
+        Color32 selectedColor = new Color32(26, 131, 203, 255);
+
         if (Difficulty == "Easy")
         {
-            EasyButton.GetComponent<Image>().color = new Color32(255, 0, 226, 255);
-            MediumButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
-            HardButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
-            ExpertButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
+            EasyButton.GetComponent<Image>().color = selectedColor;
+            MediumButton.GetComponent<Image>().color = normalColor;
+            HardButton.GetComponent<Image>().color =normalColor;
+            ExpertButton.GetComponent<Image>().color = normalColor;
         }
         else if (Difficulty == "Medium")
         {
-            EasyButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
-            MediumButton.GetComponent<Image>().color = new Color32(255, 0, 226, 255);
-            HardButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
-            ExpertButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
+            EasyButton.GetComponent<Image>().color = normalColor;
+            MediumButton.GetComponent<Image>().color = selectedColor;
+            HardButton.GetComponent<Image>().color =normalColor;
+            ExpertButton.GetComponent<Image>().color = normalColor;
         }
         else if (Difficulty == "Hard")
         {
-            EasyButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
-            MediumButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
-            HardButton.GetComponent<Image>().color = new Color32(255, 0, 226, 255);
-            ExpertButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
+            EasyButton.GetComponent<Image>().color = normalColor;
+            MediumButton.GetComponent<Image>().color =normalColor;
+            HardButton.GetComponent<Image>().color = selectedColor;
+            ExpertButton.GetComponent<Image>().color =normalColor;
         }
         else if (Difficulty == "Expert")
         {
-            EasyButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
-            MediumButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
-            HardButton.GetComponent<Image>().color = new Color32(166, 0, 148, 255);
-            ExpertButton.GetComponent<Image>().color = new Color32(255, 0, 226, 255);
+            EasyButton.GetComponent<Image>().color = normalColor;
+            MediumButton.GetComponent<Image>().color = normalColor;
+            HardButton.GetComponent<Image>().color =normalColor;
+            ExpertButton.GetComponent<Image>().color = selectedColor;
         }
         SetupSong();
     }
 
     //attach to start song button
-    public void SetupSong()
+    public void SetupSong(bool play = false)
     {
+        drumLines.Clear();
+        timeTable.Clear();
         //returning the .chart and the .wav paths
         string difficulty_folder = Path.Combine(dir, Difficulty);
         string folder_song = Directory.GetDirectories(difficulty_folder)[Index];
@@ -115,6 +121,9 @@ public class SongSelectorTest : MonoBehaviour
             }
         }
         //start the song and remove the buttons
+        if (play) {
+            Manager.GetComponent<Manager>().PlaySong();
+        }
     }
     private void ReadCsv(string filePath)
     {

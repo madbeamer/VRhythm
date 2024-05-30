@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+using UnityEngine.InputSystem;
+using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit;
 // combo?
 // adding indicators (bad, good, perfect) to the drum
 // cannot detach major radius from minor radius
@@ -17,14 +20,25 @@ public class closingCircle : MonoBehaviour
     private bool missed = true;
     private const float shrinkingTime = 1.0f;
 
+    
+#region Private fields
+    private bool active;
+    private bool previousStatePressed = false;
+    private InputFeatureUsage<bool> playButton;
+    private UnityEngine.XR.InputDevice? device;
+#endregion
+
     void Start()
     {
+        // Set playButton
+        playButton = UnityEngine.XR.CommonUsages.secondaryButton;
+
         // points text
         manager = GameObject.Find("Drums").GetComponent<Manager>();
         particlesPrefab = Resources.Load<GameObject>("particlesPrefab");
         GameObject torusPrefab = Resources.Load<GameObject>("torusPrefab");
         //diameter of the drums and position
-        radiusDrum = transform.localScale.x / 2; //maybe using the collider size
+        radiusDrum = transform.lossyScale.x / 2; //maybe using the collider size
         //create modified clone of torus
         changedTorus = Instantiate(torusPrefab, transform.position + new Vector3(0, transform.localScale.y / 2, 0), transform.rotation);
         changedTorus.transform.localScale = new Vector3(radiusDrum, 0.1f, radiusDrum);
@@ -90,5 +104,29 @@ public class closingCircle : MonoBehaviour
             }
         }
 
+    }
+
+    private void CheckPress() {
+        List<UnityEngine.XR.InputDevice> rightHandControllers = new List<UnityEngine.XR.InputDevice>();
+        InputDevices.GetDevicesAtXRNode(XRNode.RightHand, rightHandControllers);
+        if (rightHandControllers.Count > 0)
+        {
+            device = rightHandControllers[0];
+            bool buttonPressed = false;
+            if (!previousStatePressed && device.HasValue && device.Value.TryGetFeatureValue(playButton, out buttonPressed) && buttonPressed)
+            {
+                previousStatePressed = true;
+                OnCollisionEnter(null);
+            } else if (previousStatePressed && device.HasValue && device.Value.TryGetFeatureValue(playButton, out buttonPressed) && !buttonPressed)
+            {
+                previousStatePressed = false;
+            }
+        }
+    }
+    void Update()
+    {
+        if(manager.IsPlaying() && transform.tag == "KickCollider"){
+            CheckPress();
+        }
     }
 }
