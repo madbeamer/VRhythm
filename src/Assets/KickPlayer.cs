@@ -27,22 +27,26 @@ public class KickPlayer : MonoBehaviour
         if (audioSource != null) {
             audioSource = gameObject.GetComponent<AudioSource>();
         }
-        List<UnityEngine.XR.InputDevice> rightHandControllers = new List<UnityEngine.XR.InputDevice>();
-        InputDevices.GetDevicesAtXRNode(XRNode.RightHand, rightHandControllers);
-        device = rightHandControllers[0];
     }
 
     // Update is called once per frame
     void Update()
     {
-        bool buttonPressed = false;
-        if (!previousStatePressed && device.HasValue && device.Value.TryGetFeatureValue(playButton, out buttonPressed) && buttonPressed)
+        List<UnityEngine.XR.InputDevice> rightHandControllers = new List<UnityEngine.XR.InputDevice>();
+        InputDevices.GetDevicesAtXRNode(XRNode.RightHand, rightHandControllers);
+        // UnityEngine.XR.InputDevices.GetDevicesWithCharacteristics(UnityEngine.XR.InputDeviceCharacteristics.Controller, devices);
+        if (rightHandControllers.Count > 0)
         {
-            previousStatePressed = true;
-            PlayKick();
-        } else if (previousStatePressed && device.HasValue && device.Value.TryGetFeatureValue(playButton, out buttonPressed) && !buttonPressed)
-        {
-            previousStatePressed = false;
+            device = rightHandControllers[0];
+            bool buttonPressed = false;
+            if (!previousStatePressed && device.HasValue && device.Value.TryGetFeatureValue(playButton, out buttonPressed) && buttonPressed)
+            {
+                previousStatePressed = true;
+                PlayKick();
+            } else if (previousStatePressed && device.HasValue && device.Value.TryGetFeatureValue(playButton, out buttonPressed) && !buttonPressed)
+            {
+                previousStatePressed = false;
+            }
         }
     }
 

@@ -10,7 +10,6 @@ public class GameMenuManager : MonoBehaviour
     public Transform head;
     public float spawnDistance = 2.0f;
     public GameObject menu;
-    public InputActionProperty showButton;
 
     private InputFeatureUsage<bool> toggleButton;
 
@@ -34,7 +33,6 @@ public class GameMenuManager : MonoBehaviour
             device = leftHandControllers[0];
             bool buttonPressed = false;
             if (!previousStatePressed && device.HasValue && device.Value.TryGetFeatureValue(toggleButton, out buttonPressed) && buttonPressed)
-            // if (showButton.action.WasPressedThisFrame())
             {
                 previousStatePressed = true;
                 Debug.Log("Show button pressed");

@@ -4193,6 +4193,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1743312209}
     m_Modifications:
+    - target: {fileID: 3424875865361394164, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
+      propertyPath: collider
+      value: 
+      objectReference: {fileID: 2146389069}
     - target: {fileID: 5754175233147434103, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
       propertyPath: m_Name
       value: Drumstick Right Variant
@@ -11390,6 +11394,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 829820169}
     m_Modifications:
+    - target: {fileID: 4047113087850845952, guid: a1830b83a7d04a04aa26fe04b3f71b27, type: 3}
+      propertyPath: collider
+      value: 
+      objectReference: {fileID: 2034395751}
     - target: {fileID: 5200689943864056119, guid: a1830b83a7d04a04aa26fe04b3f71b27, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.03
@@ -11442,6 +11450,11 @@ PrefabInstance:
 --- !u!4 &2034395748 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5200689943864056119, guid: a1830b83a7d04a04aa26fe04b3f71b27, type: 3}
+  m_PrefabInstance: {fileID: 2034395747}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &2034395751 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 7843481769651405317, guid: a1830b83a7d04a04aa26fe04b3f71b27, type: 3}
   m_PrefabInstance: {fileID: 2034395747}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2079776575
@@ -11653,6 +11666,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2145438636}
   m_CullTransparentMesh: 1
+--- !u!136 &2146389069 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 5096566317898475879, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
+  m_PrefabInstance: {fileID: 751731366}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
