@@ -67,28 +67,28 @@ public class SongSelectorTest : MonoBehaviour
         {
             EasyButton.GetComponent<Image>().color = selectedColor;
             MediumButton.GetComponent<Image>().color = normalColor;
-            HardButton.GetComponent<Image>().color =normalColor;
+            HardButton.GetComponent<Image>().color = normalColor;
             ExpertButton.GetComponent<Image>().color = normalColor;
         }
         else if (Difficulty == "Medium")
         {
             EasyButton.GetComponent<Image>().color = normalColor;
             MediumButton.GetComponent<Image>().color = selectedColor;
-            HardButton.GetComponent<Image>().color =normalColor;
+            HardButton.GetComponent<Image>().color = normalColor;
             ExpertButton.GetComponent<Image>().color = normalColor;
         }
         else if (Difficulty == "Hard")
         {
             EasyButton.GetComponent<Image>().color = normalColor;
-            MediumButton.GetComponent<Image>().color =normalColor;
+            MediumButton.GetComponent<Image>().color = normalColor;
             HardButton.GetComponent<Image>().color = selectedColor;
-            ExpertButton.GetComponent<Image>().color =normalColor;
+            ExpertButton.GetComponent<Image>().color = normalColor;
         }
         else if (Difficulty == "Expert")
         {
             EasyButton.GetComponent<Image>().color = normalColor;
             MediumButton.GetComponent<Image>().color = normalColor;
-            HardButton.GetComponent<Image>().color =normalColor;
+            HardButton.GetComponent<Image>().color = normalColor;
             ExpertButton.GetComponent<Image>().color = selectedColor;
         }
         SetupSong();
@@ -102,8 +102,6 @@ public class SongSelectorTest : MonoBehaviour
         //returning the .chart and the .wav paths
         string difficulty_folder = Path.Combine(dir, Difficulty);
         string folder_song = Directory.GetDirectories(difficulty_folder)[Index];
-
-        Debug.Log($"In dir {difficulty_folder}; Reading lines for {folder_song}");
 
         StartCoroutine(LoadClip(Path.Combine(folder_song, "song.wav")));
         ReadCsv(Path.Combine(folder_song, "time_notes.txt"));
@@ -121,7 +119,8 @@ public class SongSelectorTest : MonoBehaviour
             }
         }
         //start the song and remove the buttons
-        if (play) {
+        if (play)
+        {
             Manager.GetComponent<Manager>().PlaySong();
         }
     }

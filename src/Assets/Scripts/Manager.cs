@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using System.Globalization;
 using System;
+using UnityEngine.XR.Interaction.Toolkit;
 //adding here the start song??
 public class Manager : MonoBehaviour
 {
@@ -83,10 +84,8 @@ public class Manager : MonoBehaviour
     private IEnumerator GetRhythm(List<float> timeTable, List<int> drumLines)
     {
         int len = timeTable.Count;
-        Debug.Log($"Length: {len}");
         for (int i = 0; i < len; i++)
         {
-            Debug.Log($"{i}: {timeTable[i]}");
             if (timeTable[i] != 0)
             {
                 yield return new WaitForSeconds(timeTable[i]);
@@ -110,7 +109,8 @@ public class Manager : MonoBehaviour
         foreach (Transform drum in transform)
         {
             GameObject collider = drum.Find("Collider").gameObject;
-            collider.GetComponent<AudioSource>().enabled = false;
+            drum.GetComponent<XRGrabInteractable>().enabled = false;
+            GetComponent<Collider>().GetComponent<AudioSource>().enabled = false;
         }
         PlayingMenu.SetActive(true);
         SongSelector.SetActive(false);

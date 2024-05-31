@@ -54,11 +54,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 6cd74646b32cb0c46b9f773e88ee8b10, type: 2}
     - target: {fileID: 919132149155446097, guid: 0f759cab0d1632445b417b2a44888b19, type: 3}
       propertyPath: m_Name
-      value: torus
+      value: torusPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0f759cab0d1632445b417b2a44888b19, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

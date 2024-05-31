@@ -20,13 +20,14 @@ public class closingCircle : MonoBehaviour
     private bool missed = true;
     private const float shrinkingTime = 1.0f;
 
-    
-#region Private fields
+
+    #region Private fields
     private bool active;
     private bool previousStatePressed = false;
     private InputFeatureUsage<bool> playButton;
     private UnityEngine.XR.InputDevice? device;
-#endregion
+    private GameObject torusPrefab;
+    #endregion
 
     void Start()
     {
@@ -36,12 +37,10 @@ public class closingCircle : MonoBehaviour
         // points text
         manager = GameObject.Find("Drums").GetComponent<Manager>();
         particlesPrefab = Resources.Load<GameObject>("particlesPrefab");
-        GameObject torusPrefab = Resources.Load<GameObject>("torusPrefab");
+        torusPrefab = Resources.Load<GameObject>("torusPrefab");
         //diameter of the drums and position
         radiusDrum = transform.lossyScale.x / 2; //maybe using the collider size
         //create modified clone of torus
-        changedTorus = Instantiate(torusPrefab, transform.position + new Vector3(0, transform.localScale.y / 2, 0), transform.rotation);
-        changedTorus.transform.localScale = new Vector3(radiusDrum, 0.1f, radiusDrum);
     }
 
     private IEnumerator ShrinkTorus(GameObject torus)
@@ -68,8 +67,8 @@ public class closingCircle : MonoBehaviour
 
     public void SpawnTorus()
     {
-        GameObject newTorus = Instantiate(changedTorus);
-        newTorus.SetActive(true);
+        GameObject newTorus = Instantiate(torusPrefab, transform.position + new Vector3(0, transform.localScale.y / 2, 0), transform.rotation);
+        newTorus.transform.localScale = new Vector3(radiusDrum, 0.1f, radiusDrum);
         StartCoroutine(ShrinkTorus(newTorus));
         queue.Enqueue(newTorus);
     }
@@ -106,7 +105,8 @@ public class closingCircle : MonoBehaviour
 
     }
 
-    private void CheckPress() {
+    private void CheckPress()
+    {
         List<UnityEngine.XR.InputDevice> rightHandControllers = new List<UnityEngine.XR.InputDevice>();
         InputDevices.GetDevicesAtXRNode(XRNode.RightHand, rightHandControllers);
         if (rightHandControllers.Count > 0)
@@ -117,7 +117,8 @@ public class closingCircle : MonoBehaviour
             {
                 previousStatePressed = true;
                 OnCollisionEnter(null);
-            } else if (previousStatePressed && device.HasValue && device.Value.TryGetFeatureValue(playButton, out buttonPressed) && !buttonPressed)
+            }
+            else if (previousStatePressed && device.HasValue && device.Value.TryGetFeatureValue(playButton, out buttonPressed) && !buttonPressed)
             {
                 previousStatePressed = false;
             }
@@ -125,7 +126,8 @@ public class closingCircle : MonoBehaviour
     }
     void Update()
     {
-        if(manager.IsPlaying() && transform.tag == "KickCollider"){
+        if (manager.IsPlaying() && transform.tag == "KickCollider")
+        {
             CheckPress();
         }
     }
