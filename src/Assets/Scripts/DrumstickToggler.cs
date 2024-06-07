@@ -31,8 +31,8 @@ public class DrumstickToggler : MonoBehaviour
         active = activeOnWake;
         toggleButton = UnityEngine.XR.CommonUsages.primaryButton;
 
-        if (drumstickCollider != null) {
-            drumstickCollider = gameObject.GetComponent<Collider>();
+        if (drumstickCollider == null) {
+            drumstickCollider = gameObject.GetComponentInChildren<Collider>();
         }
     }
 

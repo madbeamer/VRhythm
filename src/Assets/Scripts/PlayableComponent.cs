@@ -53,23 +53,17 @@ public class PlayableComponent : MonoBehaviour
     /// <param name="collision">Collision information, e.g. contact points and impact velocity</param>
     private void OnCollisionEnter(Collision collision)
     {
-        if (rigidbody != null && audioSource != null)
+        SpeedTracker otherSpeed = collision.gameObject.GetComponent<SpeedTracker>();
+        if (otherSpeed != null && audioSource != null)
         {
-            // Loop through all contact points
-            foreach (ContactPoint contact in collision.contacts)
+            // Calculate the dot product of the stick's velocity and the normal vector
+            float dotProduct = Vector3.Dot(transform.up, otherSpeed.Direction);
+
+            // If the dot product is positive, the collision is coming from the outside
+            if (dotProduct < 0)
             {
-                // Get the normal vector of the contact point
-                Vector3 normal = contact.normal;
-
-                // Calculate the dot product of the relative velocity and the normal vector
-                float dotProduct = Vector3.Dot(transform.up, normal);
-
-                // If the dot product is positive, the collision is coming from the outside
-                if (dotProduct < 0)
-                {
-                    audioSource.Play();
-                    break; // Exit the loop since we found a valid contact point
-                }
+                audioSource.volume = otherSpeed.Speed;
+                audioSource.Play();
             }
         }
     }
