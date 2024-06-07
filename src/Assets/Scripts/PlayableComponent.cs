@@ -51,10 +51,27 @@ public class PlayableComponent : MonoBehaviour
     /// <param name="collision">Collision information, e.g. contact points and impact velocity</param>
     private void OnCollisionEnter(Collision collision)
     {
-        if (audioSource != null/* &&
-            collision.relativeVelocity.magnitude > 2*/)
+        if (audioSource != null)
         {
-            audioSource.Play();
+            // Loop through all contact points
+            foreach (ContactPoint contact in collision.contacts)
+            {
+                // Get the relative velocity at the contact point
+                Vector3 relativeVelocity = collision.relativeVelocity;
+
+                // Get the normal vector of the contact point
+                Vector3 normal = contact.normal;
+
+                // Calculate the dot product of the relative velocity and the normal vector
+                float dotProduct = Vector3.Dot(relativeVelocity, normal);
+
+                // If the dot product is positive, the collision is coming from the outside
+                if (dotProduct > 0)
+                {
+                    audioSource.Play();
+                    break; // Exit the loop since we found a valid contact point
+                }
+            }
         }
     }
 
