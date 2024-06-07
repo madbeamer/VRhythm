@@ -12,6 +12,7 @@ public class PlayableComponent : MonoBehaviour
     private readonly string BASE_AUDIO_DIRECTORY = Path.Combine("Assets", "Audio", "Samples");
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private int altIndex;
+    private Rigidbody rigidbody;
 
     public int AltIndex
     {
@@ -41,6 +42,7 @@ public class PlayableComponent : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        rigidbody = GetComponent<Rigidbody>();
         InstantiateAudioSource();
         UpdateAudioClip();
     }
@@ -51,26 +53,20 @@ public class PlayableComponent : MonoBehaviour
     /// <param name="collision">Collision information, e.g. contact points and impact velocity</param>
     private void OnCollisionEnter(Collision collision)
     {
-        if (audioSource != null)
+        if (rigidbody != null && audioSource != null)
         {
-            Debug.Log("Let's take a look-see at all the contact points :)");
             // Loop through all contact points
             foreach (ContactPoint contact in collision.contacts)
             {
-                Debug.Log($"Alright, we have {contact}");
-                // Get the relative velocity at the contact point
-                Vector3 relativeVelocity = collision.relativeVelocity;
-
                 // Get the normal vector of the contact point
                 Vector3 normal = contact.normal;
 
                 // Calculate the dot product of the relative velocity and the normal vector
-                float dotProduct = Vector3.Dot(relativeVelocity, normal);
+                float dotProduct = Vector3.Dot(transform.up, normal);
 
                 // If the dot product is positive, the collision is coming from the outside
-                if (dotProduct > 0)
+                if (dotProduct < 0)
                 {
-                    Debug.Log($"Seems like {contact} is our guy!");
                     audioSource.Play();
                     break; // Exit the loop since we found a valid contact point
                 }
