@@ -3807,7 +3807,7 @@ Transform:
   m_GameObject: {fileID: 694248719}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.97936, z: -0, w: -0.20212397}
-  m_LocalPosition: {x: -0.15, y: -2.552, z: -1.628}
+  m_LocalPosition: {x: 0.15, y: -2.65, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4080,13 +4080,17 @@ PrefabInstance:
       propertyPath: collider
       value: 
       objectReference: {fileID: 2146389069}
+    - target: {fileID: 3424875865361394164, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
+      propertyPath: drumstickCollider
+      value: 
+      objectReference: {fileID: 2146389069}
     - target: {fileID: 5754175233147434103, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
       propertyPath: m_Name
       value: Drumstick Right Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8763419847510299878, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.03
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8763419847510299878, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4094,23 +4098,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8763419847510299878, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.14291
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8763419847510299878, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6587143
+      value: 0.65909374
       objectReference: {fileID: 0}
     - target: {fileID: 8763419847510299878, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.74753034
+      value: 0.75052065
       objectReference: {fileID: 0}
     - target: {fileID: 8763419847510299878, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.07190512
+      value: 0.02628238
       objectReference: {fileID: 0}
     - target: {fileID: 8763419847510299878, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.046081528
+      value: -0.040292226
       objectReference: {fileID: 0}
     - target: {fileID: 8763419847510299878, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4122,7 +4126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8763419847510299878, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 201.008
+      value: 186.008
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4144,6 +4148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 802816062}
   - component: {fileID: 802816061}
+  - component: {fileID: 802816063}
   m_Layer: 0
   m_Name: Drums
   m_TagString: Untagged
@@ -4191,6 +4196,18 @@ Transform:
   - {fileID: 454297830}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &802816063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802816060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b27455eb7eb4c4f871911a07ddd1eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &805039237
 GameObject:
   m_ObjectHideFlags: 0
@@ -11829,6 +11846,10 @@ PrefabInstance:
       propertyPath: collider
       value: 
       objectReference: {fileID: 2034395751}
+    - target: {fileID: 4047113087850845952, guid: a1830b83a7d04a04aa26fe04b3f71b27, type: 3}
+      propertyPath: drumstickCollider
+      value: 
+      objectReference: {fileID: 2034395751}
     - target: {fileID: 5200689943864056119, guid: a1830b83a7d04a04aa26fe04b3f71b27, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.03
@@ -11839,7 +11860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5200689943864056119, guid: a1830b83a7d04a04aa26fe04b3f71b27, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.1420043
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5200689943864056119, guid: a1830b83a7d04a04aa26fe04b3f71b27, type: 3}
       propertyPath: m_LocalRotation.w

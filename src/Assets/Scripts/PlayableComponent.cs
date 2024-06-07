@@ -53,9 +53,11 @@ public class PlayableComponent : MonoBehaviour
     {
         if (audioSource != null)
         {
+            Debug.Log("Let's take a look-see at all the contact points :)");
             // Loop through all contact points
             foreach (ContactPoint contact in collision.contacts)
             {
+                Debug.Log($"Alright, we have {contact}");
                 // Get the relative velocity at the contact point
                 Vector3 relativeVelocity = collision.relativeVelocity;
 
@@ -68,6 +70,7 @@ public class PlayableComponent : MonoBehaviour
                 // If the dot product is positive, the collision is coming from the outside
                 if (dotProduct > 0)
                 {
+                    Debug.Log($"Seems like {contact} is our guy!");
                     audioSource.Play();
                     break; // Exit the loop since we found a valid contact point
                 }

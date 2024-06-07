@@ -611,18 +611,6 @@ MonoBehaviour:
   head: {fileID: 2008825247}
   spawnDistance: 2
   menu: {fileID: 1452705069}
-  showButton:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Show Button
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 35b8056f-04fb-4aed-8efd-f841b118a96a
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 7249542003842746600, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!4 &321386120
 Transform:
   m_ObjectHideFlags: 0
@@ -5036,17 +5024,21 @@ PrefabInstance:
       propertyPath: collider
       value: 
       objectReference: {fileID: 1104737837}
+    - target: {fileID: 4047113087850845952, guid: a1830b83a7d04a04aa26fe04b3f71b27, type: 3}
+      propertyPath: drumstickCollider
+      value: 
+      objectReference: {fileID: 1104737837}
     - target: {fileID: 5200689943864056119, guid: a1830b83a7d04a04aa26fe04b3f71b27, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 5200689943864056119, guid: a1830b83a7d04a04aa26fe04b3f71b27, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5200689943864056119, guid: a1830b83a7d04a04aa26fe04b3f71b27, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.1420043
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5200689943864056119, guid: a1830b83a7d04a04aa26fe04b3f71b27, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6447,37 +6439,41 @@ PrefabInstance:
       propertyPath: collider
       value: 
       objectReference: {fileID: 1670215987}
+    - target: {fileID: 3424875865361394164, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
+      propertyPath: drumstickCollider
+      value: 
+      objectReference: {fileID: 1670215987}
     - target: {fileID: 5754175233147434103, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
       propertyPath: m_Name
       value: Drumstick Right Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8763419847510299878, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 8763419847510299878, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
-      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8763419847510299878, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8763419847510299878, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.14291
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8763419847510299878, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6587143
+      value: 0.65909374
       objectReference: {fileID: 0}
     - target: {fileID: 8763419847510299878, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.74753034
+      value: 0.75052065
       objectReference: {fileID: 0}
     - target: {fileID: 8763419847510299878, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.07190512
+      value: 0.02628238
       objectReference: {fileID: 0}
     - target: {fileID: 8763419847510299878, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.046081528
+      value: -0.040292226
       objectReference: {fileID: 0}
     - target: {fileID: 8763419847510299878, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6489,7 +6485,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8763419847510299878, guid: c2fe6bcc3a56c9a4090308efe384f916, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 201.008
+      value: 186.008
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

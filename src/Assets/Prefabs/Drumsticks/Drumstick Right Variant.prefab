@@ -10,31 +10,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1764675668702885290, guid: b040faa731747c8449c28ff278e8d042, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 1764675668702885290, guid: b040faa731747c8449c28ff278e8d042, type: 3}
-      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1764675668702885290, guid: b040faa731747c8449c28ff278e8d042, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1764675668702885290, guid: b040faa731747c8449c28ff278e8d042, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.14291
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1764675668702885290, guid: b040faa731747c8449c28ff278e8d042, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6587143
+      value: 0.6590938
       objectReference: {fileID: 0}
     - target: {fileID: 1764675668702885290, guid: b040faa731747c8449c28ff278e8d042, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.74753034
+      value: 0.75052065
       objectReference: {fileID: 0}
     - target: {fileID: 1764675668702885290, guid: b040faa731747c8449c28ff278e8d042, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.07190512
+      value: 0.02628214
       objectReference: {fileID: 0}
     - target: {fileID: 1764675668702885290, guid: b040faa731747c8449c28ff278e8d042, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.046081528
+      value: -0.040292032
       objectReference: {fileID: 0}
     - target: {fileID: 1764675668702885290, guid: b040faa731747c8449c28ff278e8d042, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -46,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1764675668702885290, guid: b040faa731747c8449c28ff278e8d042, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 201.008
+      value: 186.008
       objectReference: {fileID: 0}
     - target: {fileID: 3331088275617125691, guid: b040faa731747c8449c28ff278e8d042, type: 3}
       propertyPath: m_Name
@@ -136,3 +136,4 @@ MonoBehaviour:
   leftController: 0
   rightController: 1
   activeOnWake: 1
+  drumstickCollider: {fileID: 5096566317898475879}

@@ -26,11 +26,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1764675668702885290, guid: b040faa731747c8449c28ff278e8d042, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1764675668702885290, guid: b040faa731747c8449c28ff278e8d042, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.1420043
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1764675668702885290, guid: b040faa731747c8449c28ff278e8d042, type: 3}
       propertyPath: m_LocalRotation.w
@@ -148,3 +148,4 @@ MonoBehaviour:
   leftController: 1
   rightController: 0
   activeOnWake: 1
+  drumstickCollider: {fileID: 7843481769651405317}
