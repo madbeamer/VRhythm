@@ -84,6 +84,7 @@ public class Manager : MonoBehaviour
     private IEnumerator GetRhythm(List<float> timeTable, List<int> drumLines)
     {
         int len = timeTable.Count;
+        //Debug.Log("Song length: " + len);
         for (int i = 0; i < len; i++)
         {
             if (timeTable[i] != 0)
@@ -92,6 +93,7 @@ public class Manager : MonoBehaviour
             }
             drums[drumLines[i]].SpawnTorus();
             //what drum to play
+            //Debug.Log("Song index: " + i);
         }
         isPlaying = false;
     }
@@ -110,7 +112,19 @@ public class Manager : MonoBehaviour
         {
             GameObject collider = drum.Find("Collider").gameObject;
             drum.GetComponent<XRGrabInteractable>().enabled = false;
-            GetComponent<Collider>().GetComponent<AudioSource>().enabled = false;
+            Collider[] colliders = GetComponentsInChildren<Collider>();
+
+            foreach (Collider coll in colliders)
+            {
+                // Check if the GameObject with the Collider also has an AudioSource component
+                AudioSource audioSource = coll.GetComponent<AudioSource>();
+                if (audioSource != null)
+                {
+                    // Disable the AudioSource component
+                    audioSource.enabled = false;
+                }
+            }
+
         }
         PlayingMenu.SetActive(true);
         SongSelector.SetActive(false);

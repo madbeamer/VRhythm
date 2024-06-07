@@ -116,7 +116,7 @@ public class PlayableComponent : MonoBehaviour
         }
         // Get audio clip's filename by index of file in folder
         string newClipFile = clipFiles[altIndex];
-        Debug.Log($"Getting clip at directory {newClipFile}");
+        //Debug.Log($"Getting clip at directory {newClipFile}");
         // If the file doesn't exist, I crye (T~T)
         if (!File.Exists(newClipFile))
         {
@@ -128,7 +128,7 @@ public class PlayableComponent : MonoBehaviour
         {
             InstantiateAudioSource();
             audioSource.clip = clip;
-            Debug.Log(clip);
+            //Debug.Log(clip);
         }));
     }
 
@@ -144,7 +144,7 @@ public class PlayableComponent : MonoBehaviour
 
         // Convert local path to file URL
         string fileUrl = "file:///" + filePath;
-        Debug.Log(fileUrl);
+        //Debug.Log(fileUrl);
 
         // Create a UnityWebRequest to get the AudioClip
         UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(fileUrl, AudioType.WAV);

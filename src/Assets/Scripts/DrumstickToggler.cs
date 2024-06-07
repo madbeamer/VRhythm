@@ -16,7 +16,7 @@ public class DrumstickToggler : MonoBehaviour
     [SerializeField]
     private bool activeOnWake = false;
     [SerializeField]
-    private Collider collider;
+    private Collider drumstickCollider;
     #endregion
 
     #region Private fields
@@ -31,8 +31,8 @@ public class DrumstickToggler : MonoBehaviour
         active = activeOnWake;
         toggleButton = UnityEngine.XR.CommonUsages.primaryButton;
 
-        if (collider != null) {
-            collider = gameObject.GetComponent<Collider>();
+        if (drumstickCollider != null) {
+            drumstickCollider = gameObject.GetComponent<Collider>();
         }
     }
 
@@ -46,12 +46,18 @@ public class DrumstickToggler : MonoBehaviour
             {
                 List<UnityEngine.XR.InputDevice> leftHandControllers = new List<UnityEngine.XR.InputDevice>();
                 InputDevices.GetDevicesAtXRNode(XRNode.LeftHand, leftHandControllers);
-                device = leftHandControllers[0];
+                if (leftHandControllers.Count > 0 )
+                {
+                    device = leftHandControllers[0];
+                }
+
             } else if (rightController)
             {
                 List<UnityEngine.XR.InputDevice> rightHandControllers = new List<UnityEngine.XR.InputDevice>();
                 InputDevices.GetDevicesAtXRNode(XRNode.RightHand, rightHandControllers);
-                device = rightHandControllers[0];
+                if (rightHandControllers.Count > 0 ) { 
+                    device = rightHandControllers[0]; 
+                }
             }
 
             bool buttonPressed = false;
@@ -72,11 +78,11 @@ public class DrumstickToggler : MonoBehaviour
         if (active)
         {
             gameObject.transform.localScale = new(1.0f, 1.0f, 1.0f);
-            collider.enabled = true;
+            drumstickCollider.enabled = true;
         } else
         {
             gameObject.transform.localScale = new(0.0f, 0.0f, 0.0f);
-            collider.enabled = false;
+            drumstickCollider.enabled = false;
         }
     }
 }

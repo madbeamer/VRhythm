@@ -35,7 +35,7 @@ public class SongSelectorTest : MonoBehaviour
     {
         TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
         Difficulty = buttonText.text;
-        Debug.Log($"Changed difficulty to {Difficulty}");
+        //Debug.Log($"Changed difficulty to {Difficulty}");
         Index = 0;
         DisplaySong();
     }
@@ -102,7 +102,6 @@ public class SongSelectorTest : MonoBehaviour
         //returning the .chart and the .wav paths
         string difficulty_folder = Path.Combine(dir, Difficulty);
         string folder_song = Directory.GetDirectories(difficulty_folder)[Index];
-
         StartCoroutine(LoadClip(Path.Combine(folder_song, "song.wav")));
         ReadCsv(Path.Combine(folder_song, "time_notes.txt"));
         GameObject drums = GameObject.Find("Drums");
@@ -126,7 +125,7 @@ public class SongSelectorTest : MonoBehaviour
     }
     private void ReadCsv(string filePath)
     {
-        Debug.Log($"Getting CSV from {filePath}");
+        //Debug.Log($"Getting CSV from {filePath}");
         using (StreamReader sr = new StreamReader(filePath))
         {
             string line;
