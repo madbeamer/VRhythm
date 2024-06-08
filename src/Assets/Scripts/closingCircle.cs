@@ -7,6 +7,7 @@ using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
+using System;
 // combo?
 // adding indicators (bad, good, perfect) to the drum
 // cannot detach major radius from minor radius
@@ -88,7 +89,11 @@ public class closingCircle : MonoBehaviour
                 particles.transform.localScale = new Vector3(radiusTorus, radiusTorus, 1);
 
                 //add points
-                int newPointsCombo = (int)(radiusDrum / radiusTorus); //multiply by int maybe
+                if(radiusTorus <= 0.0f)
+                {
+                    return;
+                }
+                int newPointsCombo = Math.Clamp((int)(radiusDrum / radiusTorus), 0, 100); //multiply by int maybe
                 //current points
                 int newPoints = (int)(newPointsCombo * manager.GetCombo()); //could round to same number
                 manager.AddPoints(newPoints, newPointsCombo);

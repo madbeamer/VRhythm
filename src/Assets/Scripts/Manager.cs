@@ -5,6 +5,7 @@ using TMPro;
 using System.Globalization;
 using System;
 using UnityEngine.XR.Interaction.Toolkit;
+using System.Runtime.InteropServices;
 //adding here the start song??
 public class Manager : MonoBehaviour
 {
@@ -82,19 +83,32 @@ public class Manager : MonoBehaviour
     }
 
     private IEnumerator GetRhythm(List<float> timeTable, List<int> drumLines)
-    {
+    {   
+        int currentTimeIndex = 0;
+        double startTimestamp = Time.realtimeSinceStartupAsDouble;
         int len = timeTable.Count;
-        //Debug.Log("Song length: " + len);
-        for (int i = 0; i < len; i++)
-        {
-            if (timeTable[i] != 0)
+        while (currentTimeIndex < len) {
+            Debug.Log("Current time index: " + currentTimeIndex);
+            double currentTime = Time.realtimeSinceStartupAsDouble - startTimestamp;
+            if (currentTime >= timeTable[currentTimeIndex])
             {
-                yield return new WaitForSeconds(timeTable[i]);
+                drums[drumLines[currentTimeIndex]].SpawnTorus();
+                startTimestamp += timeTable[currentTimeIndex];
+                ++currentTimeIndex;
             }
-            drums[drumLines[i]].SpawnTorus();
-            //what drum to play
-            //Debug.Log("Song index: " + i);
+            yield return null;
         }
+        //Debug.Log("Song length: " + len);
+        // for (int i = 0; i < len; i++)
+        // {
+        //     if (timeTable[i] != 0)
+        //     {
+        //         yield return new WaitForSeconds(timeTable[i]);
+        //     }
+        //     drums[drumLines[i]].SpawnTorus();
+        //     //what drum to play
+        //     //Debug.Log("Song index: " + i);
+        // }
         isPlaying = false;
     }
 
@@ -108,6 +122,7 @@ public class Manager : MonoBehaviour
         //wait for the song to load
         audioSource.Play();
         StartCoroutine(GetRhythm(timeTable, drumLines));
+        // GetRhythm(timeTable, drumLines);
         foreach (Transform drum in transform)
         {
             GameObject collider = drum.Find("Collider").gameObject;

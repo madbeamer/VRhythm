@@ -59,7 +59,7 @@ public class PlayableComponent : MonoBehaviour
             // Calculate the dot product of the stick's velocity and the normal vector
             float dotProduct = Vector3.Dot(transform.up, otherSpeed.Direction);
 
-            // If the dot product is positive, the collision is coming from the outside
+            // If the dot product is negative, the collision is coming from the outside
             if (dotProduct < 0)
             {
                 audioSource.volume = otherSpeed.Speed;

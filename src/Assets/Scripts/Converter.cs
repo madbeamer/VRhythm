@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using UnityEngine;
 using System.Globalization;
+using System.Linq;
 
 public class Converter : MonoBehaviour
 {
@@ -40,7 +41,6 @@ public class Converter : MonoBehaviour
 
     void Awake()
     {
-
         foreach (string path in Directory.GetDirectories(dir))
         {
             string difficulty = Path.GetFileName(path);
@@ -140,6 +140,7 @@ public class Converter : MonoBehaviour
             timeTable.Add(totalTime - prevSec);
             prevSec = totalTime;
         }
+
     }
 
     private void createCSV(string path)
@@ -154,5 +155,4 @@ public class Converter : MonoBehaviour
             }
         }
     }
-
 }
