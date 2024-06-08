@@ -84,7 +84,7 @@ public class closingCircle : MonoBehaviour
                 float radiusTorus = smallTorus.transform.localScale.x / 2;
 
                 //particle system, change color and multiplier depending on the radius
-                GameObject particles = Instantiate(particlesPrefab, transform.position, Quaternion.Euler(-90f, 0f, 0f));//change rotation of the particles
+                GameObject particles = Instantiate(particlesPrefab, transform.position, Quaternion.LookRotation(transform.up));//change rotation of the particles
                 particles.transform.localScale = new Vector3(radiusTorus, radiusTorus, 1);
 
                 //add points
